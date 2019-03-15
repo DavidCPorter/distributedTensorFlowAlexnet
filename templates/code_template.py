@@ -10,29 +10,29 @@ tf.logging.set_verbosity(tf.logging.DEBUG)
 
 clusterSpec_single = tf.train.ClusterSpec({
     "worker" : [
-        "localhost:2222"
+        "node-0:2222"
     ]
 })
 
 clusterSpec_cluster = tf.train.ClusterSpec({
     "ps" : [
-        "host_name0:2222"
+        "node-0:2222"
     ],
     "worker" : [
-        "host_name0:2222",
-        "host_name1:2222"
+        "node-0:2222",
+        "node-1:2222"
     ]
 })
 
 clusterSpec_cluster2 = tf.train.ClusterSpec({
     "ps" : [
-        "host_name0:2222"
+        "node-0:2222"
     ],
     "worker" : [
-        "host_name0:2222",
-        "host_name1:2222",
-        "host_name2:2222",
-        "host_name3:2222"
+        "node-0:2222",
+        "node-1:2222",
+        "node-2:2222",
+        "node-3:2222"
     ]
 })
 

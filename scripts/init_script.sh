@@ -39,13 +39,34 @@ parallel-ssh -h ./slaves -t 0 -P sudo pip install tensorflow
 
 echo "Installation completed, downloading template code scripts..."
 
-if [ ! -f ./hw2 ]; then
+if [ ! -d ./hw2 ]; then
 	mkdir hw2
 fi
-
 cd ./hw2
 
-wget https://www2.cs.uic.edu/~brents/cs494-cdcs/assets/run_code_template.sh
+if [ ! -d ./scripts ]; then
+	mkdir scripts
+fi
+cd ./scripts
 wget https://www2.cs.uic.edu/~brents/cs494-cdcs/assets/cluster_utils.sh 
+
+cd ..
+if [ ! -d ./templates ]; then
+	mkdir templates
+fi
+cd ./templates
+wget https://www2.cs.uic.edu/~brents/cs494-cdcs/assets/run_code_template.sh
+# wget code_template.py
+
+echo "Configuring the code_template.py script..."
+
+sed -i 's|host_name0|node-0|' ./code_template.py
+sed -i 's|host_name1|node-1|' ./code_template.py
+sed -i 's|host_name2|node-2|' ./code_template.py
+sed -i 's|host_name3|node-3|' ./code_template.py
+
+cd ..
+
+echo "Done..."
 
 exit
