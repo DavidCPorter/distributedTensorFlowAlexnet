@@ -1,0 +1,38 @@
+2019-03-12 11:22:21.906611: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-03-12 11:22:21.936435: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2593715000 Hz
+2019-03-12 11:22:21.939686: I tensorflow/compiler/xla/service/service.cc:150] XLA service 0x3436800 executing computations on platform Host. Devices:
+2019-03-12 11:22:21.939719: I tensorflow/compiler/xla/service/service.cc:158]   StreamExecutor device (0): <undefined>, <undefined>
+2019-03-12 11:22:21.942559: I tensorflow/core/distributed_runtime/rpc/grpc_channel.cc:252] Initialize GrpcChannelCache for job ps -> {0 -> 10.10.1.2:3333}
+2019-03-12 11:22:21.942589: I tensorflow/core/distributed_runtime/rpc/grpc_channel.cc:252] Initialize GrpcChannelCache for job worker -> {0 -> 10.10.1.2:2222, 1 -> 10.10.1.4:2222, 2 -> localhost:2222, 3 -> 10.10.1.1:2222}
+2019-03-12 11:22:21.946993: I tensorflow/core/distributed_runtime/rpc/grpc_server_lib.cc:391] Started server with target: grpc://localhost:2222
+Downloading data from https://storage.googleapis.com/tensorflow/tf-keras-datasets/mnist.npz
+    8192/11490434 [..............................] - ETA: 4s  270336/11490434 [..............................] - ETA: 2s 1310720/11490434 [==>...........................] - ETA: 0s 3981312/11490434 [=========>....................] - ETA: 0s 4202496/11490434 [=========>....................] - ETA: 0s 5939200/11490434 [==============>...............] - ETA: 0s 9314304/11490434 [=======================>......] - ETA: 0s11493376/11490434 [==============================] - 0s 0us/step
+WARNING:tensorflow:From /usr/local/lib/python3.6/dist-packages/tensorflow/python/framework/op_def_library.py:263: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+WARNING:tensorflow:From /usr/local/lib/python3.6/dist-packages/tensorflow/python/ops/math_ops.py:3066: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+train images: (60000, 28, 28)
+train labels: (60000,)
+ test images: (10000, 28, 28)
+ test labels: (10000,)
+train images: (60000, 784)
+train labels: (60000,)
+ test images: (10000, 784)
+ test labels: (10000,)
+train images: (60000, 784)
+train labels: (60000, 10)
+ test images: (10000, 784)
+ test labels: (10000, 10)
+epoch: 0 loss=0.3009
+epoch: 2 loss=0.5030
+epoch: 4 loss=0.4305
+epoch: 6 loss=0.4382
+epoch: 8 loss=0.4338
+epoch:10 loss=0.2234
+epoch:12 loss=0.5930
+epoch:14 loss=0.4357
+epoch:16 loss=0.3485
+epoch:18 loss=0.2409
+Accuracy: 90.10%
