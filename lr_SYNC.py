@@ -132,7 +132,7 @@ elif FLAGS.job_name == "worker":
 		time.sleep(1)
 
 # automates the recovery process
-	with tf.train.MonitoredSession(master = server.target,is_chief=is_chief,chief_only_hooks = hooks, hooks=stop_hook, checkpoint_dir="/tmp/train_log") as mon_sess:
+	with tf.train.MonitoredTrainingSession(master = server.target,is_chief=is_chief,chief_only_hooks = hooks, hooks=stop_hook, checkpoint_dir="/tmp/train_log") as mon_sess:
 		while not mon_sess.should_stop():
 		# if is_chief: time.sleep(2)
 			e=0
@@ -149,7 +149,7 @@ elif FLAGS.job_name == "worker":
 					if is_chief==0 and myglob >= 9000:
 						break
 					_,gs,loss = mon_sess.run([optimizer,global_step,cost],feed_dict={X: batch_x, Y: batch_y})
-					print(gs)
+					# print(gs)
 
 
 				print('Worker %d, ' % int(FLAGS.task_index), "Epoch:", '%d' % (e),

@@ -2,214 +2,182 @@ Extracting MNIST_data/train-images-idx3-ubyte.gz
 WARNING:tensorflow:From lr_sync.py:52: read_data_sets (from tensorflow.contrib.learn.python.learn.datasets.mnist) is deprecated and will be removed in a future version.
 Instructions for updating:
 Please use alternatives such as official/mnist/dataset.py from tensorflow/models.
-WARNING:tensorflow:From /usr/local/lib/python3.6/dist-packages/tensorflow/contrib/learn/python/learn/datasets/mnist.py:260: maybe_download (from tensorflow.contrib.learn.python.learn.datasets.base) is deprecated and will be removed in a future version.
+WARNING:tensorflow:From /users/dporte7/.local/lib/python3.6/site-packages/tensorflow/contrib/learn/python/learn/datasets/mnist.py:260: maybe_download (from tensorflow.contrib.learn.python.learn.datasets.base) is deprecated and will be removed in a future version.
 Instructions for updating:
 Please write your own downloading logic.
-WARNING:tensorflow:From /usr/local/lib/python3.6/dist-packages/tensorflow/contrib/learn/python/learn/datasets/mnist.py:262: extract_images (from tensorflow.contrib.learn.python.learn.datasets.mnist) is deprecated and will be removed in a future version.
+WARNING:tensorflow:From /users/dporte7/.local/lib/python3.6/site-packages/tensorflow/contrib/learn/python/learn/datasets/mnist.py:262: extract_images (from tensorflow.contrib.learn.python.learn.datasets.mnist) is deprecated and will be removed in a future version.
 Instructions for updating:
 Please use tf.data to implement this functionality.
 Extracting MNIST_data/train-labels-idx1-ubyte.gz
-WARNING:tensorflow:From /usr/local/lib/python3.6/dist-packages/tensorflow/contrib/learn/python/learn/datasets/mnist.py:267: extract_labels (from tensorflow.contrib.learn.python.learn.datasets.mnist) is deprecated and will be removed in a future version.
+WARNING:tensorflow:From /users/dporte7/.local/lib/python3.6/site-packages/tensorflow/contrib/learn/python/learn/datasets/mnist.py:267: extract_labels (from tensorflow.contrib.learn.python.learn.datasets.mnist) is deprecated and will be removed in a future version.
 Instructions for updating:
 Please use tf.data to implement this functionality.
-WARNING:tensorflow:From /usr/local/lib/python3.6/dist-packages/tensorflow/contrib/learn/python/learn/datasets/mnist.py:110: dense_to_one_hot (from tensorflow.contrib.learn.python.learn.datasets.mnist) is deprecated and will be removed in a future version.
+WARNING:tensorflow:From /users/dporte7/.local/lib/python3.6/site-packages/tensorflow/contrib/learn/python/learn/datasets/mnist.py:110: dense_to_one_hot (from tensorflow.contrib.learn.python.learn.datasets.mnist) is deprecated and will be removed in a future version.
 Instructions for updating:
 Please use tf.one_hot on tensors.
 Extracting MNIST_data/t10k-images-idx3-ubyte.gz
 Extracting MNIST_data/t10k-labels-idx1-ubyte.gz
-WARNING:tensorflow:From /usr/local/lib/python3.6/dist-packages/tensorflow/contrib/learn/python/learn/datasets/mnist.py:290: DataSet.__init__ (from tensorflow.contrib.learn.python.learn.datasets.mnist) is deprecated and will be removed in a future version.
+WARNING:tensorflow:From /users/dporte7/.local/lib/python3.6/site-packages/tensorflow/contrib/learn/python/learn/datasets/mnist.py:290: DataSet.__init__ (from tensorflow.contrib.learn.python.learn.datasets.mnist) is deprecated and will be removed in a future version.
 Instructions for updating:
 Please use alternatives such as official/mnist/dataset.py from tensorflow/models.
-2019-03-15 16:26:35.099901: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
-2019-03-15 16:26:35.109616: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2593690000 Hz
-2019-03-15 16:26:35.112644: I tensorflow/compiler/xla/service/service.cc:150] XLA service 0x2b58890 executing computations on platform Host. Devices:
-2019-03-15 16:26:35.112680: I tensorflow/compiler/xla/service/service.cc:158]   StreamExecutor device (0): <undefined>, <undefined>
-2019-03-15 16:26:35.115495: I tensorflow/core/distributed_runtime/rpc/grpc_channel.cc:252] Initialize GrpcChannelCache for job ps -> {0 -> 10.10.1.1:3333}
-2019-03-15 16:26:35.115524: I tensorflow/core/distributed_runtime/rpc/grpc_channel.cc:252] Initialize GrpcChannelCache for job worker -> {0 -> localhost:2222, 1 -> 10.10.1.2:2222}
-2019-03-15 16:26:35.119867: I tensorflow/core/distributed_runtime/rpc/grpc_server_lib.cc:391] Started server with target: grpc://localhost:2222
+2019-04-23 09:06:49.479668: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-04-23 09:06:49.508243: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2394320000 Hz
+2019-04-23 09:06:49.510880: I tensorflow/compiler/xla/service/service.cc:150] XLA service 0x2a71590 executing computations on platform Host. Devices:
+2019-04-23 09:06:49.510920: I tensorflow/compiler/xla/service/service.cc:158]   StreamExecutor device (0): <undefined>, <undefined>
+2019-04-23 09:06:49.513605: I tensorflow/core/distributed_runtime/rpc/grpc_channel.cc:252] Initialize GrpcChannelCache for job ps -> {0 -> 10.10.1.1:3333}
+2019-04-23 09:06:49.513634: I tensorflow/core/distributed_runtime/rpc/grpc_channel.cc:252] Initialize GrpcChannelCache for job worker -> {0 -> localhost:2222, 1 -> 10.10.1.2:2222}
+2019-04-23 09:06:49.517663: I tensorflow/core/distributed_runtime/rpc/grpc_server_lib.cc:391] Started server with target: grpc://localhost:2222
 featureCount->  784 classCount->  10
 trainSize->  55000
 train images: (55000, 784)
 train labels: (55000, 10)
  test images: (10000, 784)
  test labels: (10000, 10)
-WARNING:tensorflow:From /usr/local/lib/python3.6/dist-packages/tensorflow/python/framework/op_def_library.py:263: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+WARNING:tensorflow:From /users/dporte7/.local/lib/python3.6/site-packages/tensorflow/python/framework/op_def_library.py:263: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
 Instructions for updating:
 Colocations handled automatically by placer.
 WARNING:tensorflow:From lr_sync.py:119: SyncReplicasOptimizer.__init__ (from tensorflow.python.training.sync_replicas_optimizer) is deprecated and will be removed in a future version.
 Instructions for updating:
 The `SyncReplicaOptimizer` class is deprecated. For synchrononous training, please use [Distribution Strategies](https://github.com/tensorflow/tensorflow/tree/master/tensorflow/contrib/distribute).
 INFO:tensorflow:SyncReplicasV2: replicas_to_aggregate=2; total_num_replicas=2
-WARNING:tensorflow:From /usr/local/lib/python3.6/dist-packages/tensorflow/python/ops/math_ops.py:3066: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+WARNING:tensorflow:From /users/dporte7/.local/lib/python3.6/site-packages/tensorflow/python/ops/math_ops.py:3066: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
 Instructions for updating:
 Use tf.cast instead.
-WARNING:tensorflow:From /usr/local/lib/python3.6/dist-packages/tensorflow/python/ops/data_flow_ops.py:1294: to_int64 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+WARNING:tensorflow:From /users/dporte7/.local/lib/python3.6/site-packages/tensorflow/python/ops/data_flow_ops.py:1294: to_int64 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
 Instructions for updating:
 Use tf.cast instead.
-WARNING:tensorflow:From /usr/local/lib/python3.6/dist-packages/tensorflow/python/training/sync_replicas_optimizer.py:352: QueueRunner.__init__ (from tensorflow.python.training.queue_runner_impl) is deprecated and will be removed in a future version.
+WARNING:tensorflow:From /users/dporte7/.local/lib/python3.6/site-packages/tensorflow/python/training/sync_replicas_optimizer.py:352: QueueRunner.__init__ (from tensorflow.python.training.queue_runner_impl) is deprecated and will be removed in a future version.
 Instructions for updating:
 To construct input pipelines, use the `tf.data` module.
 INFO:tensorflow:Create CheckpointSaverHook.
 INFO:tensorflow:Graph was finalized.
-WARNING:tensorflow:From /usr/local/lib/python3.6/dist-packages/tensorflow/python/training/saver.py:1266: checkpoint_exists (from tensorflow.python.training.checkpoint_management) is deprecated and will be removed in a future version.
+WARNING:tensorflow:From /users/dporte7/.local/lib/python3.6/site-packages/tensorflow/python/training/saver.py:1266: checkpoint_exists (from tensorflow.python.training.checkpoint_management) is deprecated and will be removed in a future version.
 Instructions for updating:
 Use standard file APIs to check for files with this prefix.
-INFO:tensorflow:Restoring parameters from /tmp/train_log/model.ckpt-8841
-2019-03-15 16:26:35.345527: I tensorflow/core/distributed_runtime/master_session.cc:1192] Start master session 3d6c1b0775289995 with config: 
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/client/session.py", line 1334, in _do_call
-    return fn(*args)
-  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/client/session.py", line 1319, in _run_fn
-    options, feed_dict, fetch_list, target_list, run_metadata)
-  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/client/session.py", line 1407, in _call_tf_sessionrun
-    run_metadata)
-tensorflow.python.framework.errors_impl.InvalidArgumentError: tensor_name = global_step; expected dtype int32 does not equal original dtype int64
-	 [[{{node save/RestoreV2}}]]
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/training/saver.py", line 1276, in restore
-    {self.saver_def.filename_tensor_name: save_path})
-  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/client/session.py", line 929, in run
-    run_metadata_ptr)
-  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/client/session.py", line 1152, in _run
-    feed_dict_tensor, options, run_metadata)
-  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/client/session.py", line 1328, in _do_run
-    run_metadata)
-  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/client/session.py", line 1348, in _do_call
-    raise type(e)(node_def, op, message)
-tensorflow.python.framework.errors_impl.InvalidArgumentError: tensor_name = global_step; expected dtype int32 does not equal original dtype int64
-	 [[node save/RestoreV2 (defined at lr_sync.py:135) ]]
-
-Caused by op 'save/RestoreV2', defined at:
-  File "lr_sync.py", line 135, in <module>
-    with tf.train.MonitoredTrainingSession(master = server.target,is_chief=is_chief,chief_only_hooks = hooks, hooks=stop_hook, checkpoint_dir="/tmp/train_log") as mon_sess:
-  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/training/monitored_session.py", line 508, in MonitoredTrainingSession
-    stop_grace_period_secs=stop_grace_period_secs)
-  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/training/monitored_session.py", line 934, in __init__
-    stop_grace_period_secs=stop_grace_period_secs)
-  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/training/monitored_session.py", line 648, in __init__
-    self._sess = _RecoverableSession(self._coordinated_creator)
-  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/training/monitored_session.py", line 1122, in __init__
-    _WrappedSession.__init__(self, self._create_session())
-  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/training/monitored_session.py", line 1127, in _create_session
-    return self._sess_creator.create_session()
-  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/training/monitored_session.py", line 805, in create_session
-    self.tf_sess = self._session_creator.create_session()
-  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/training/monitored_session.py", line 562, in create_session
-    self._scaffold.finalize()
-  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/training/monitored_session.py", line 217, in finalize
-    self._saver = training_saver._get_saver_or_default()  # pylint: disable=protected-access
-  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/training/saver.py", line 604, in _get_saver_or_default
-    saver = Saver(sharded=True, allow_empty=True)
-  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/training/saver.py", line 832, in __init__
-    self.build()
-  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/training/saver.py", line 844, in build
-    self._build(self._filename, build_save=True, build_restore=True)
-  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/training/saver.py", line 881, in _build
-    build_save=build_save, build_restore=build_restore)
-  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/training/saver.py", line 507, in _build_internal
-    restore_sequentially, reshape)
-  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/training/saver.py", line 385, in _AddShardedRestoreOps
-    name="restore_shard"))
-  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/training/saver.py", line 332, in _AddRestoreOps
-    restore_sequentially)
-  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/training/saver.py", line 580, in bulk_restore
-    return io_ops.restore_v2(filename_tensor, names, slices, dtypes)
-  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/ops/gen_io_ops.py", line 1572, in restore_v2
-    name=name)
-  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/framework/op_def_library.py", line 788, in _apply_op_helper
-    op_def=op_def)
-  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/util/deprecation.py", line 507, in new_func
-    return func(*args, **kwargs)
-  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/framework/ops.py", line 3300, in create_op
-    op_def=op_def)
-  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/framework/ops.py", line 1801, in __init__
-    self._traceback = tf_stack.extract_stack()
-
-InvalidArgumentError (see above for traceback): tensor_name = global_step; expected dtype int32 does not equal original dtype int64
-	 [[node save/RestoreV2 (defined at lr_sync.py:135) ]]
-
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "lr_sync.py", line 135, in <module>
-    with tf.train.MonitoredTrainingSession(master = server.target,is_chief=is_chief,chief_only_hooks = hooks, hooks=stop_hook, checkpoint_dir="/tmp/train_log") as mon_sess:
-  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/training/monitored_session.py", line 508, in MonitoredTrainingSession
-    stop_grace_period_secs=stop_grace_period_secs)
-  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/training/monitored_session.py", line 934, in __init__
-    stop_grace_period_secs=stop_grace_period_secs)
-  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/training/monitored_session.py", line 648, in __init__
-    self._sess = _RecoverableSession(self._coordinated_creator)
-  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/training/monitored_session.py", line 1122, in __init__
-    _WrappedSession.__init__(self, self._create_session())
-  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/training/monitored_session.py", line 1127, in _create_session
-    return self._sess_creator.create_session()
-  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/training/monitored_session.py", line 805, in create_session
-    self.tf_sess = self._session_creator.create_session()
-  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/training/monitored_session.py", line 571, in create_session
-    init_fn=self._scaffold.init_fn)
-  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/training/session_manager.py", line 281, in prepare_session
-    config=config)
-  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/training/session_manager.py", line 211, in _restore_checkpoint
-    saver.restore(sess, ckpt.model_checkpoint_path)
-  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/training/saver.py", line 1312, in restore
-    err, "a mismatch between the current graph and the graph")
-tensorflow.python.framework.errors_impl.InvalidArgumentError: Restoring from checkpoint failed. This is most likely due to a mismatch between the current graph and the graph from the checkpoint. Please ensure that you have not altered the graph expected based on the checkpoint. Original error:
-
-tensor_name = global_step; expected dtype int32 does not equal original dtype int64
-	 [[node save/RestoreV2 (defined at lr_sync.py:135) ]]
-
-Caused by op 'save/RestoreV2', defined at:
-  File "lr_sync.py", line 135, in <module>
-    with tf.train.MonitoredTrainingSession(master = server.target,is_chief=is_chief,chief_only_hooks = hooks, hooks=stop_hook, checkpoint_dir="/tmp/train_log") as mon_sess:
-  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/training/monitored_session.py", line 508, in MonitoredTrainingSession
-    stop_grace_period_secs=stop_grace_period_secs)
-  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/training/monitored_session.py", line 934, in __init__
-    stop_grace_period_secs=stop_grace_period_secs)
-  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/training/monitored_session.py", line 648, in __init__
-    self._sess = _RecoverableSession(self._coordinated_creator)
-  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/training/monitored_session.py", line 1122, in __init__
-    _WrappedSession.__init__(self, self._create_session())
-  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/training/monitored_session.py", line 1127, in _create_session
-    return self._sess_creator.create_session()
-  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/training/monitored_session.py", line 805, in create_session
-    self.tf_sess = self._session_creator.create_session()
-  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/training/monitored_session.py", line 562, in create_session
-    self._scaffold.finalize()
-  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/training/monitored_session.py", line 217, in finalize
-    self._saver = training_saver._get_saver_or_default()  # pylint: disable=protected-access
-  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/training/saver.py", line 604, in _get_saver_or_default
-    saver = Saver(sharded=True, allow_empty=True)
-  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/training/saver.py", line 832, in __init__
-    self.build()
-  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/training/saver.py", line 844, in build
-    self._build(self._filename, build_save=True, build_restore=True)
-  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/training/saver.py", line 881, in _build
-    build_save=build_save, build_restore=build_restore)
-  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/training/saver.py", line 507, in _build_internal
-    restore_sequentially, reshape)
-  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/training/saver.py", line 385, in _AddShardedRestoreOps
-    name="restore_shard"))
-  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/training/saver.py", line 332, in _AddRestoreOps
-    restore_sequentially)
-  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/training/saver.py", line 580, in bulk_restore
-    return io_ops.restore_v2(filename_tensor, names, slices, dtypes)
-  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/ops/gen_io_ops.py", line 1572, in restore_v2
-    name=name)
-  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/framework/op_def_library.py", line 788, in _apply_op_helper
-    op_def=op_def)
-  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/util/deprecation.py", line 507, in new_func
-    return func(*args, **kwargs)
-  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/framework/ops.py", line 3300, in create_op
-    op_def=op_def)
-  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/framework/ops.py", line 1801, in __init__
-    self._traceback = tf_stack.extract_stack()
-
-InvalidArgumentError (see above for traceback): Restoring from checkpoint failed. This is most likely due to a mismatch between the current graph and the graph from the checkpoint. Please ensure that you have not altered the graph expected based on the checkpoint. Original error:
-
-tensor_name = global_step; expected dtype int32 does not equal original dtype int64
-	 [[node save/RestoreV2 (defined at lr_sync.py:135) ]]
-
+INFO:tensorflow:Restoring parameters from /tmp/train_log/model.ckpt-0
+2019-04-23 09:06:49.739379: I tensorflow/core/distributed_runtime/master_session.cc:1192] Start master session 3d8b968097d27e61 with config: 
+WARNING:tensorflow:From /users/dporte7/.local/lib/python3.6/site-packages/tensorflow/python/training/saver.py:1070: get_checkpoint_mtimes (from tensorflow.python.training.checkpoint_management) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use standard file utilities to get mtimes.
+INFO:tensorflow:Running local_init_op.
+INFO:tensorflow:Done running local_init_op.
+INFO:tensorflow:Saving checkpoints for 16 into /tmp/train_log/model.ckpt.
+INFO:tensorflow:global_step/sec: 150.358
+INFO:tensorflow:global_step/sec: 252.877
+INFO:tensorflow:global_step/sec: 284.821
+INFO:tensorflow:global_step/sec: 282.011
+INFO:tensorflow:global_step/sec: 283.509
+INFO:tensorflow:global_step/sec: 280.358
+INFO:tensorflow:global_step/sec: 286.695
+INFO:tensorflow:global_step/sec: 279.951
+Worker 0,  Epoch: 1 Cost: 1.1322
+gs-> 1078
+INFO:tensorflow:global_step/sec: 284.773
+INFO:tensorflow:global_step/sec: 284.953
+INFO:tensorflow:global_step/sec: 283.666
+INFO:tensorflow:global_step/sec: 283.648
+INFO:tensorflow:global_step/sec: 285.206
+INFO:tensorflow:global_step/sec: 285.632
+INFO:tensorflow:global_step/sec: 286.595
+INFO:tensorflow:global_step/sec: 284.625
+INFO:tensorflow:global_step/sec: 280.131
+INFO:tensorflow:global_step/sec: 282.168
+Worker 0,  Epoch: 2 Cost: 0.6348
+gs-> 2078
+INFO:tensorflow:global_step/sec: 284.299
+INFO:tensorflow:global_step/sec: 285.035
+INFO:tensorflow:global_step/sec: 283.616
+INFO:tensorflow:global_step/sec: 283.957
+INFO:tensorflow:global_step/sec: 282.798
+INFO:tensorflow:global_step/sec: 284.061
+INFO:tensorflow:global_step/sec: 284.244
+INFO:tensorflow:global_step/sec: 283.888
+INFO:tensorflow:global_step/sec: 279.02
+INFO:tensorflow:global_step/sec: 278.722
+Worker 0,  Epoch: 3 Cost: 0.4331
+gs-> 3078
+INFO:tensorflow:global_step/sec: 277.65
+INFO:tensorflow:global_step/sec: 279.749
+INFO:tensorflow:global_step/sec: 277.362
+INFO:tensorflow:global_step/sec: 275.327
+INFO:tensorflow:global_step/sec: 279.214
+INFO:tensorflow:global_step/sec: 280.758
+INFO:tensorflow:global_step/sec: 273.907
+INFO:tensorflow:global_step/sec: 272.551
+INFO:tensorflow:global_step/sec: 270.064
+INFO:tensorflow:global_step/sec: 275.013
+Worker 0,  Epoch: 4 Cost: 0.3323
+gs-> 4078
+INFO:tensorflow:global_step/sec: 279.166
+INFO:tensorflow:global_step/sec: 275.37
+INFO:tensorflow:global_step/sec: 280.521
+INFO:tensorflow:global_step/sec: 277.603
+INFO:tensorflow:global_step/sec: 275.802
+INFO:tensorflow:global_step/sec: 275.823
+INFO:tensorflow:global_step/sec: 283.541
+INFO:tensorflow:global_step/sec: 279.233
+INFO:tensorflow:global_step/sec: 285.436
+INFO:tensorflow:global_step/sec: 282.212
+Worker 0,  Epoch: 5 Cost: 0.2713
+gs-> 5078
+INFO:tensorflow:global_step/sec: 281.895
+INFO:tensorflow:global_step/sec: 283.92
+INFO:tensorflow:global_step/sec: 286.207
+INFO:tensorflow:global_step/sec: 277.909
+INFO:tensorflow:global_step/sec: 278.919
+INFO:tensorflow:global_step/sec: 283.743
+INFO:tensorflow:global_step/sec: 280.795
+INFO:tensorflow:global_step/sec: 287.109
+INFO:tensorflow:global_step/sec: 280.874
+INFO:tensorflow:global_step/sec: 280.946
+Worker 0,  Epoch: 6 Cost: 0.2308
+gs-> 6078
+INFO:tensorflow:global_step/sec: 281.606
+INFO:tensorflow:global_step/sec: 283.448
+INFO:tensorflow:global_step/sec: 288.323
+INFO:tensorflow:global_step/sec: 277.224
+INFO:tensorflow:global_step/sec: 283.226
+INFO:tensorflow:global_step/sec: 277.02
+INFO:tensorflow:global_step/sec: 279.812
+INFO:tensorflow:global_step/sec: 277.641
+INFO:tensorflow:global_step/sec: 278.328
+INFO:tensorflow:global_step/sec: 277.867
+Worker 0,  Epoch: 7 Cost: 0.2024
+gs-> 7078
+INFO:tensorflow:global_step/sec: 279.785
+INFO:tensorflow:global_step/sec: 276.828
+INFO:tensorflow:global_step/sec: 280.928
+INFO:tensorflow:global_step/sec: 280.611
+INFO:tensorflow:global_step/sec: 278.606
+INFO:tensorflow:global_step/sec: 281.618
+INFO:tensorflow:global_step/sec: 279.945
+INFO:tensorflow:global_step/sec: 283.252
+INFO:tensorflow:global_step/sec: 279.611
+INFO:tensorflow:global_step/sec: 274.286
+Worker 0,  Epoch: 8 Cost: 0.1816
+gs-> 8078
+INFO:tensorflow:global_step/sec: 280.6
+INFO:tensorflow:global_step/sec: 282.97
+INFO:tensorflow:global_step/sec: 279.513
+INFO:tensorflow:global_step/sec: 273.27
+INFO:tensorflow:global_step/sec: 275.283
+INFO:tensorflow:global_step/sec: 275.593
+INFO:tensorflow:global_step/sec: 276.871
+INFO:tensorflow:global_step/sec: 274.22
+INFO:tensorflow:global_step/sec: 269.193
+INFO:tensorflow:global_step/sec: 272.687
+Worker 0,  Epoch: 9 Cost: 0.1659
+gs-> 9078
+INFO:tensorflow:global_step/sec: 272.975
+INFO:tensorflow:global_step/sec: 272.599
+INFO:tensorflow:global_step/sec: 274.021
+INFO:tensorflow:global_step/sec: 278.375
+INFO:tensorflow:global_step/sec: 277.785
+INFO:tensorflow:global_step/sec: 278.344
+INFO:tensorflow:global_step/sec: 281.258
+INFO:tensorflow:global_step/sec: 279.525
+INFO:tensorflow:global_step/sec: 279.356
+INFO:tensorflow:global_step/sec: 275.454
+Worker 0,  Epoch: 10 Cost: 0.1620
+gs-> 10078
+INFO:tensorflow:global_step/sec: 278.559
