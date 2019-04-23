@@ -33,7 +33,7 @@ function start_cluster() {
             # added log for tensorboard
             ssh dporte7@node$i "mkdir -p $TF_RUN_DIR/{log}"
             # ssh dporte7@node$i "mkdir $SERVER_LOG"
-            scp $1 dporte7@node$i:$TF_RUN_DIR
+            scp lr_code/$1 dporte7@node$i:$TF_RUN_DIR
             # scp task2_output/* dporte7@node$i:$SERVER_LOG
             # ssh dporte7@node$i "tensorboard --logdir $TF_LOG_DIR"
 

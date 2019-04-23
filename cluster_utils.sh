@@ -31,7 +31,8 @@ function start_cluster() {
         for i in `seq 0 3`; do
             # added log for tensorboard
             ssh dporte7@node$i "mkdir -p $TF_RUN_DIR"
-            scp $1 dporte7@node$i:$TF_RUN_DIR
+            pwd
+            scp lr_code/$1 dporte7@node$i:$TF_RUN_DIR
 
         done
         echo "Starting tensorflow servers on all hosts based on the spec in $1"
