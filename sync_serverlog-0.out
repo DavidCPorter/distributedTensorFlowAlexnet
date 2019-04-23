@@ -20,13 +20,13 @@ Extracting MNIST_data/t10k-labels-idx1-ubyte.gz
 WARNING:tensorflow:From /users/dporte7/.local/lib/python3.6/site-packages/tensorflow/contrib/learn/python/learn/datasets/mnist.py:290: DataSet.__init__ (from tensorflow.contrib.learn.python.learn.datasets.mnist) is deprecated and will be removed in a future version.
 Instructions for updating:
 Please use alternatives such as official/mnist/dataset.py from tensorflow/models.
-2019-04-23 09:06:49.479668: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
-2019-04-23 09:06:49.508243: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2394320000 Hz
-2019-04-23 09:06:49.510880: I tensorflow/compiler/xla/service/service.cc:150] XLA service 0x2a71590 executing computations on platform Host. Devices:
-2019-04-23 09:06:49.510920: I tensorflow/compiler/xla/service/service.cc:158]   StreamExecutor device (0): <undefined>, <undefined>
-2019-04-23 09:06:49.513605: I tensorflow/core/distributed_runtime/rpc/grpc_channel.cc:252] Initialize GrpcChannelCache for job ps -> {0 -> 10.10.1.1:3333}
-2019-04-23 09:06:49.513634: I tensorflow/core/distributed_runtime/rpc/grpc_channel.cc:252] Initialize GrpcChannelCache for job worker -> {0 -> localhost:2222, 1 -> 10.10.1.2:2222}
-2019-04-23 09:06:49.517663: I tensorflow/core/distributed_runtime/rpc/grpc_server_lib.cc:391] Started server with target: grpc://localhost:2222
+2019-04-23 12:11:04.450201: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-04-23 12:11:04.459618: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2394320000 Hz
+2019-04-23 12:11:04.461979: I tensorflow/compiler/xla/service/service.cc:150] XLA service 0x3a9b000 executing computations on platform Host. Devices:
+2019-04-23 12:11:04.462008: I tensorflow/compiler/xla/service/service.cc:158]   StreamExecutor device (0): <undefined>, <undefined>
+2019-04-23 12:11:04.464539: I tensorflow/core/distributed_runtime/rpc/grpc_channel.cc:252] Initialize GrpcChannelCache for job ps -> {0 -> 10.10.1.1:3333}
+2019-04-23 12:11:04.464562: I tensorflow/core/distributed_runtime/rpc/grpc_channel.cc:252] Initialize GrpcChannelCache for job worker -> {0 -> localhost:2222, 1 -> 10.10.1.2:2222}
+2019-04-23 12:11:04.468388: I tensorflow/core/distributed_runtime/rpc/grpc_server_lib.cc:391] Started server with target: grpc://localhost:2222
 featureCount->  784 classCount->  10
 trainSize->  55000
 train images: (55000, 784)
@@ -54,130 +54,148 @@ INFO:tensorflow:Graph was finalized.
 WARNING:tensorflow:From /users/dporte7/.local/lib/python3.6/site-packages/tensorflow/python/training/saver.py:1266: checkpoint_exists (from tensorflow.python.training.checkpoint_management) is deprecated and will be removed in a future version.
 Instructions for updating:
 Use standard file APIs to check for files with this prefix.
-INFO:tensorflow:Restoring parameters from /tmp/train_log/model.ckpt-0
-2019-04-23 09:06:49.739379: I tensorflow/core/distributed_runtime/master_session.cc:1192] Start master session 3d8b968097d27e61 with config: 
+INFO:tensorflow:Restoring parameters from /tmp/train_log/model.ckpt-16
+2019-04-23 12:11:04.697142: I tensorflow/core/distributed_runtime/master_session.cc:1192] Start master session 826a1c74d7a43d57 with config: 
 WARNING:tensorflow:From /users/dporte7/.local/lib/python3.6/site-packages/tensorflow/python/training/saver.py:1070: get_checkpoint_mtimes (from tensorflow.python.training.checkpoint_management) is deprecated and will be removed in a future version.
 Instructions for updating:
 Use standard file utilities to get mtimes.
 INFO:tensorflow:Running local_init_op.
 INFO:tensorflow:Done running local_init_op.
 INFO:tensorflow:Saving checkpoints for 16 into /tmp/train_log/model.ckpt.
-INFO:tensorflow:global_step/sec: 150.358
-INFO:tensorflow:global_step/sec: 252.877
-INFO:tensorflow:global_step/sec: 284.821
-INFO:tensorflow:global_step/sec: 282.011
-INFO:tensorflow:global_step/sec: 283.509
-INFO:tensorflow:global_step/sec: 280.358
-INFO:tensorflow:global_step/sec: 286.695
-INFO:tensorflow:global_step/sec: 279.951
-Worker 0,  Epoch: 1 Cost: 1.1322
+INFO:tensorflow:global_step/sec: 147.85
+INFO:tensorflow:global_step/sec: 252.726
+INFO:tensorflow:global_step/sec: 284.139
+INFO:tensorflow:global_step/sec: 279.527
+INFO:tensorflow:global_step/sec: 282.353
+INFO:tensorflow:global_step/sec: 277.934
+INFO:tensorflow:global_step/sec: 278.89
+INFO:tensorflow:global_step/sec: 277.845
+Worker 0,  Epoch: 1 Cost: 1.1275
 gs-> 1078
-INFO:tensorflow:global_step/sec: 284.773
-INFO:tensorflow:global_step/sec: 284.953
-INFO:tensorflow:global_step/sec: 283.666
-INFO:tensorflow:global_step/sec: 283.648
-INFO:tensorflow:global_step/sec: 285.206
-INFO:tensorflow:global_step/sec: 285.632
-INFO:tensorflow:global_step/sec: 286.595
-INFO:tensorflow:global_step/sec: 284.625
-INFO:tensorflow:global_step/sec: 280.131
-INFO:tensorflow:global_step/sec: 282.168
-Worker 0,  Epoch: 2 Cost: 0.6348
+INFO:tensorflow:global_step/sec: 280.55
+INFO:tensorflow:global_step/sec: 281.184
+INFO:tensorflow:global_step/sec: 280.075
+INFO:tensorflow:global_step/sec: 280.792
+INFO:tensorflow:global_step/sec: 281.603
+INFO:tensorflow:global_step/sec: 283.487
+INFO:tensorflow:global_step/sec: 279.042
+INFO:tensorflow:global_step/sec: 282.531
+INFO:tensorflow:global_step/sec: 283.39
+INFO:tensorflow:global_step/sec: 282.73
+Worker 0,  Epoch: 2 Cost: 0.6330
 gs-> 2078
-INFO:tensorflow:global_step/sec: 284.299
-INFO:tensorflow:global_step/sec: 285.035
-INFO:tensorflow:global_step/sec: 283.616
-INFO:tensorflow:global_step/sec: 283.957
-INFO:tensorflow:global_step/sec: 282.798
-INFO:tensorflow:global_step/sec: 284.061
-INFO:tensorflow:global_step/sec: 284.244
-INFO:tensorflow:global_step/sec: 283.888
-INFO:tensorflow:global_step/sec: 279.02
-INFO:tensorflow:global_step/sec: 278.722
-Worker 0,  Epoch: 3 Cost: 0.4331
+INFO:tensorflow:global_step/sec: 280.018
+INFO:tensorflow:global_step/sec: 279.651
+INFO:tensorflow:global_step/sec: 281.086
+INFO:tensorflow:global_step/sec: 276.725
+INFO:tensorflow:global_step/sec: 279.981
+INFO:tensorflow:global_step/sec: 280.156
+INFO:tensorflow:global_step/sec: 283.094
+INFO:tensorflow:global_step/sec: 284.456
+INFO:tensorflow:global_step/sec: 280.629
+INFO:tensorflow:global_step/sec: 280.216
+Worker 0,  Epoch: 3 Cost: 0.4326
 gs-> 3078
-INFO:tensorflow:global_step/sec: 277.65
-INFO:tensorflow:global_step/sec: 279.749
-INFO:tensorflow:global_step/sec: 277.362
-INFO:tensorflow:global_step/sec: 275.327
-INFO:tensorflow:global_step/sec: 279.214
-INFO:tensorflow:global_step/sec: 280.758
-INFO:tensorflow:global_step/sec: 273.907
-INFO:tensorflow:global_step/sec: 272.551
-INFO:tensorflow:global_step/sec: 270.064
-INFO:tensorflow:global_step/sec: 275.013
-Worker 0,  Epoch: 4 Cost: 0.3323
+INFO:tensorflow:global_step/sec: 284.552
+INFO:tensorflow:global_step/sec: 279.661
+INFO:tensorflow:global_step/sec: 279.881
+INFO:tensorflow:global_step/sec: 273.238
+INFO:tensorflow:global_step/sec: 270.723
+INFO:tensorflow:global_step/sec: 271.27
+INFO:tensorflow:global_step/sec: 268.022
+INFO:tensorflow:global_step/sec: 266.953
+INFO:tensorflow:global_step/sec: 267.664
+INFO:tensorflow:global_step/sec: 271.402
+Worker 0,  Epoch: 4 Cost: 0.3318
 gs-> 4078
-INFO:tensorflow:global_step/sec: 279.166
-INFO:tensorflow:global_step/sec: 275.37
-INFO:tensorflow:global_step/sec: 280.521
-INFO:tensorflow:global_step/sec: 277.603
-INFO:tensorflow:global_step/sec: 275.802
-INFO:tensorflow:global_step/sec: 275.823
-INFO:tensorflow:global_step/sec: 283.541
-INFO:tensorflow:global_step/sec: 279.233
-INFO:tensorflow:global_step/sec: 285.436
-INFO:tensorflow:global_step/sec: 282.212
-Worker 0,  Epoch: 5 Cost: 0.2713
+INFO:tensorflow:global_step/sec: 266.749
+INFO:tensorflow:global_step/sec: 272.297
+INFO:tensorflow:global_step/sec: 268.801
+INFO:tensorflow:global_step/sec: 276.436
+INFO:tensorflow:global_step/sec: 276.615
+INFO:tensorflow:global_step/sec: 273.247
+INFO:tensorflow:global_step/sec: 278.339
+INFO:tensorflow:global_step/sec: 282.408
+INFO:tensorflow:global_step/sec: 282.215
+INFO:tensorflow:global_step/sec: 282.696
+Worker 0,  Epoch: 5 Cost: 0.2707
 gs-> 5078
-INFO:tensorflow:global_step/sec: 281.895
-INFO:tensorflow:global_step/sec: 283.92
-INFO:tensorflow:global_step/sec: 286.207
-INFO:tensorflow:global_step/sec: 277.909
-INFO:tensorflow:global_step/sec: 278.919
-INFO:tensorflow:global_step/sec: 283.743
-INFO:tensorflow:global_step/sec: 280.795
-INFO:tensorflow:global_step/sec: 287.109
-INFO:tensorflow:global_step/sec: 280.874
-INFO:tensorflow:global_step/sec: 280.946
-Worker 0,  Epoch: 6 Cost: 0.2308
+INFO:tensorflow:global_step/sec: 280.227
+INFO:tensorflow:global_step/sec: 277.791
+INFO:tensorflow:global_step/sec: 279.064
+INFO:tensorflow:global_step/sec: 284.332
+INFO:tensorflow:global_step/sec: 280.672
+INFO:tensorflow:global_step/sec: 279.675
+INFO:tensorflow:global_step/sec: 278.703
+INFO:tensorflow:global_step/sec: 281.539
+INFO:tensorflow:global_step/sec: 275.218
+INFO:tensorflow:global_step/sec: 280.721
+Worker 0,  Epoch: 6 Cost: 0.2303
 gs-> 6078
-INFO:tensorflow:global_step/sec: 281.606
-INFO:tensorflow:global_step/sec: 283.448
-INFO:tensorflow:global_step/sec: 288.323
-INFO:tensorflow:global_step/sec: 277.224
-INFO:tensorflow:global_step/sec: 283.226
-INFO:tensorflow:global_step/sec: 277.02
-INFO:tensorflow:global_step/sec: 279.812
-INFO:tensorflow:global_step/sec: 277.641
-INFO:tensorflow:global_step/sec: 278.328
-INFO:tensorflow:global_step/sec: 277.867
-Worker 0,  Epoch: 7 Cost: 0.2024
+INFO:tensorflow:global_step/sec: 280.772
+INFO:tensorflow:global_step/sec: 283.5
+INFO:tensorflow:global_step/sec: 279.852
+INFO:tensorflow:global_step/sec: 281.057
+INFO:tensorflow:global_step/sec: 278.769
+INFO:tensorflow:global_step/sec: 277.914
+INFO:tensorflow:global_step/sec: 277.681
+INFO:tensorflow:global_step/sec: 285.606
+INFO:tensorflow:global_step/sec: 280.257
+INFO:tensorflow:global_step/sec: 282.333
+Worker 0,  Epoch: 7 Cost: 0.2021
 gs-> 7078
-INFO:tensorflow:global_step/sec: 279.785
-INFO:tensorflow:global_step/sec: 276.828
-INFO:tensorflow:global_step/sec: 280.928
-INFO:tensorflow:global_step/sec: 280.611
-INFO:tensorflow:global_step/sec: 278.606
-INFO:tensorflow:global_step/sec: 281.618
-INFO:tensorflow:global_step/sec: 279.945
-INFO:tensorflow:global_step/sec: 283.252
-INFO:tensorflow:global_step/sec: 279.611
-INFO:tensorflow:global_step/sec: 274.286
+INFO:tensorflow:global_step/sec: 279.813
+INFO:tensorflow:global_step/sec: 283.781
+INFO:tensorflow:global_step/sec: 275.161
+INFO:tensorflow:global_step/sec: 272.619
+INFO:tensorflow:global_step/sec: 277.799
+INFO:tensorflow:global_step/sec: 272.702
+INFO:tensorflow:global_step/sec: 269.008
+INFO:tensorflow:global_step/sec: 271.355
+INFO:tensorflow:global_step/sec: 271.477
+INFO:tensorflow:global_step/sec: 272.459
 Worker 0,  Epoch: 8 Cost: 0.1816
 gs-> 8078
-INFO:tensorflow:global_step/sec: 280.6
-INFO:tensorflow:global_step/sec: 282.97
-INFO:tensorflow:global_step/sec: 279.513
-INFO:tensorflow:global_step/sec: 273.27
-INFO:tensorflow:global_step/sec: 275.283
-INFO:tensorflow:global_step/sec: 275.593
-INFO:tensorflow:global_step/sec: 276.871
-INFO:tensorflow:global_step/sec: 274.22
-INFO:tensorflow:global_step/sec: 269.193
-INFO:tensorflow:global_step/sec: 272.687
-Worker 0,  Epoch: 9 Cost: 0.1659
+INFO:tensorflow:global_step/sec: 276.636
+INFO:tensorflow:global_step/sec: 275.523
+INFO:tensorflow:global_step/sec: 277.768
+INFO:tensorflow:global_step/sec: 282.129
+INFO:tensorflow:global_step/sec: 278.238
+INFO:tensorflow:global_step/sec: 280.599
+INFO:tensorflow:global_step/sec: 282.621
+INFO:tensorflow:global_step/sec: 280.893
+INFO:tensorflow:global_step/sec: 280.85
+INFO:tensorflow:global_step/sec: 279.45
+Worker 0,  Epoch: 9 Cost: 0.1660
 gs-> 9078
-INFO:tensorflow:global_step/sec: 272.975
-INFO:tensorflow:global_step/sec: 272.599
-INFO:tensorflow:global_step/sec: 274.021
-INFO:tensorflow:global_step/sec: 278.375
-INFO:tensorflow:global_step/sec: 277.785
-INFO:tensorflow:global_step/sec: 278.344
-INFO:tensorflow:global_step/sec: 281.258
-INFO:tensorflow:global_step/sec: 279.525
-INFO:tensorflow:global_step/sec: 279.356
-INFO:tensorflow:global_step/sec: 275.454
-Worker 0,  Epoch: 10 Cost: 0.1620
+INFO:tensorflow:global_step/sec: 279.255
+INFO:tensorflow:global_step/sec: 277.133
+INFO:tensorflow:global_step/sec: 275.1
+INFO:tensorflow:global_step/sec: 269.477
+INFO:tensorflow:global_step/sec: 268.823
+INFO:tensorflow:global_step/sec: 271.92
+INFO:tensorflow:global_step/sec: 272.898
+INFO:tensorflow:global_step/sec: 271.588
+INFO:tensorflow:global_step/sec: 274.144
+INFO:tensorflow:global_step/sec: 272.835
+Worker 0,  Epoch: 10 Cost: 0.1591
 gs-> 10078
-INFO:tensorflow:global_step/sec: 278.559
+INFO:tensorflow:global_step/sec: 272.564
+INFO:tensorflow:Coordinator stopped with threads still running: QueueRunnerThread-dummy_queue-sync_token_q_EnqueueMany
+2019-04-23 12:13:51.419063: W tensorflow/core/distributed_runtime/master_session.cc:1363] Timeout for closing worker session
+Traceback (most recent call last):
+  File "lr_sync.py", line 153, in <module>
+    _,gs,loss = mon_sess.run([optimizer,global_step,cost],feed_dict={X: batch_x, Y: batch_y})
+  File "/users/dporte7/.local/lib/python3.6/site-packages/tensorflow/python/training/monitored_session.py", line 676, in run
+    run_metadata=run_metadata)
+  File "/users/dporte7/.local/lib/python3.6/site-packages/tensorflow/python/training/monitored_session.py", line 1171, in run
+    run_metadata=run_metadata)
+  File "/users/dporte7/.local/lib/python3.6/site-packages/tensorflow/python/training/monitored_session.py", line 1270, in run
+    raise six.reraise(*original_exc_info)
+  File "/users/dporte7/.local/lib/python3.6/site-packages/six.py", line 693, in reraise
+    raise value
+  File "/users/dporte7/.local/lib/python3.6/site-packages/tensorflow/python/training/monitored_session.py", line 1255, in run
+    return self._sess.run(*args, **kwargs)
+  File "/users/dporte7/.local/lib/python3.6/site-packages/tensorflow/python/training/monitored_session.py", line 1309, in run
+    raise RuntimeError('Run called even after should_stop requested.')
+RuntimeError: Run called even after should_stop requested.

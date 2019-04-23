@@ -120,11 +120,11 @@ elif FLAGS.job_name == "worker":
 		optimizer = sync_opt.minimize(cost, global_step=global_step)
 
 
-	# dont want to run forever
-	sync_replicas_hook = sync_opt.make_session_run_hook(is_chief)
-	stop_hook = [tf.train.StopAtStepHook(last_step=(num_iter*epochs))]
+		# dont want to run forever
+		sync_replicas_hook = sync_opt.make_session_run_hook(is_chief)
+		stop_hook = [tf.train.StopAtStepHook(last_step=(num_iter*epochs))]
 
-	hooks = [sync_replicas_hook]
+		hooks = [sync_replicas_hook]
 
 	# scaff = tf.train.Scaffold(init_op = init_op)
 
@@ -133,11 +133,12 @@ elif FLAGS.job_name == "worker":
 
 # automates the recovery process
 	with tf.train.MonitoredTrainingSession(master = server.target,is_chief=is_chief,chief_only_hooks = hooks, hooks=stop_hook, checkpoint_dir="/tmp/train_log") as mon_sess:
-		while not mon_sess.should_stop():
-		# if is_chief: time.sleep(2)
-			e=0
-			myglob = 78
-			while True:
+		step = 0
+		while step <= 800 + mon_sess.run(global_step):
+			if not mon_sess.should_stop():
+			# if is_chief: time.sleep(2)
+				e=0
+				myglob = 78
 				e+=1
 				# num_iter = 55,000/batch_size
 				for count in range(num_iter):
@@ -146,9 +147,9 @@ elif FLAGS.job_name == "worker":
 					batch_x = x_train[offset:(offset+batch_size)]
 					batch_y = y_train[offset:(offset+batch_size)]
 
-					if is_chief==0 and myglob >= 9000:
-						break
-					_,gs,loss = mon_sess.run([optimizer,global_step,cost],feed_dict={X: batch_x, Y: batch_y})
+					# if is_chief==0 and myglob >= 9000:
+					# 	break
+					_,step,loss = mon_sess.run([optimizer,global_step,cost],feed_dict={X: batch_x, Y: batch_y})
 					# print(gs)
 
 
@@ -156,9 +157,9 @@ elif FLAGS.job_name == "worker":
 					'Cost: %.4f'% float(loss))
 				print("gs->", myglob)
 
-				if is_chief==0 and myglob >= 9000:
-					break
-		print('jesus')
+				# if is_chief==0 and myglob >= 9000:
+				# 	break
+
 		correct_pred = tf.equal(tf.argmax(y_pred, 1), tf.argmax(Y, 1))
 		accuracy = tf.reduce_mean(tf.cast(correct_pred, tf.float32))
 		acc = accuracy.eval({X: x_test, Y: y_test})
