@@ -151,10 +151,8 @@ elif FLAGS.job_name == "worker":
 				batch_x = x_test[:(0+batch_size)]
 				batch_y = y_test[:(0+batch_size)]
 
-				predictResult,lossResult,gs = mon_sess.run([y_pred,cost,global_step],feed_dict={X: x_test, Y: y_test})
+				predictResult,lossResult,gs = mon_sess.run([y_pred,cost,global_step],feed_dict={X: batch_x, Y: batch_y})
 				print('auc :%f  loss:%f'%(roc_auc_score(np.array(batch_y), predictResult),lossResult))
-				# mon_sess.close()
-
 
 
 

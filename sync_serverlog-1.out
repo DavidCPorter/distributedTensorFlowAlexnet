@@ -20,15 +20,59 @@ Extracting MNIST_data/t10k-labels-idx1-ubyte.gz
 WARNING:tensorflow:From /users/dporte7/.local/lib/python3.6/site-packages/tensorflow/contrib/learn/python/learn/datasets/mnist.py:290: DataSet.__init__ (from tensorflow.contrib.learn.python.learn.datasets.mnist) is deprecated and will be removed in a future version.
 Instructions for updating:
 Please use alternatives such as official/mnist/dataset.py from tensorflow/models.
-2019-04-24 13:19:22.183893: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
-2019-04-24 13:19:22.213370: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2394190000 Hz
-2019-04-24 13:19:22.215911: I tensorflow/compiler/xla/service/service.cc:150] XLA service 0x2e3dee0 executing computations on platform Host. Devices:
-2019-04-24 13:19:22.215942: I tensorflow/compiler/xla/service/service.cc:158]   StreamExecutor device (0): <undefined>, <undefined>
-E0424 13:19:22.218503651    4638 server_chttp2.cc:40]        {"created":"@1556129962.218397643","description":"No address added out of total 1 resolved","file":"external/grpc/src/core/ext/transport/chttp2/server/chttp2_server.cc","file_line":349,"referenced_errors":[{"created":"@1556129962.218393928","description":"Failed to add any wildcard listeners","file":"external/grpc/src/core/lib/iomgr/tcp_server_posix.cc","file_line":324,"referenced_errors":[{"created":"@1556129962.218375440","description":"Unable to configure socket","fd":6,"file":"external/grpc/src/core/lib/iomgr/tcp_server_utils_posix_common.cc","file_line":217,"referenced_errors":[{"created":"@1556129962.218370325","description":"OS Error","errno":98,"file":"external/grpc/src/core/lib/iomgr/tcp_server_utils_posix_common.cc","file_line":190,"os_error":"Address already in use","syscall":"bind"}]},{"created":"@1556129962.218392654","description":"Unable to configure socket","fd":6,"file":"external/grpc/src/core/lib/iomgr/tcp_server_utils_posix_common.cc","file_line":217,"referenced_errors":[{"created":"@1556129962.218389165","description":"OS Error","errno":98,"file":"external/grpc/src/core/lib/iomgr/tcp_server_utils_posix_common.cc","file_line":190,"os_error":"Address already in use","syscall":"bind"}]}]}]}
-2019-04-24 13:19:22.218551: E tensorflow/core/distributed_runtime/rpc/grpc_server_lib.cc:466] Unknown: Could not start gRPC server
+2019-04-24 13:24:07.895233: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-04-24 13:24:07.925366: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2394190000 Hz
+2019-04-24 13:24:07.927886: I tensorflow/compiler/xla/service/service.cc:150] XLA service 0x24e8660 executing computations on platform Host. Devices:
+2019-04-24 13:24:07.927922: I tensorflow/compiler/xla/service/service.cc:158]   StreamExecutor device (0): <undefined>, <undefined>
+2019-04-24 13:24:07.930616: I tensorflow/core/distributed_runtime/rpc/grpc_channel.cc:252] Initialize GrpcChannelCache for job ps -> {0 -> 10.10.1.1:3333}
+2019-04-24 13:24:07.930646: I tensorflow/core/distributed_runtime/rpc/grpc_channel.cc:252] Initialize GrpcChannelCache for job worker -> {0 -> 10.10.1.1:2222, 1 -> localhost:2222}
+featureCount->  784 classCount->  10
+trainSize->  55000
+train images: (55000, 784)
+train labels: (55000, 10)
+ test images: (10000, 784)
+ test labels: (10000, 10)
+2019-04-24 13:24:07.934582: I tensorflow/core/distributed_runtime/rpc/grpc_server_lib.cc:391] Started server with target: grpc://localhost:2222
+WARNING:tensorflow:From /users/dporte7/.local/lib/python3.6/site-packages/tensorflow/python/framework/op_def_library.py:263: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+WARNING:tensorflow:From lr_sync.py:121: SyncReplicasOptimizer.__init__ (from tensorflow.python.training.sync_replicas_optimizer) is deprecated and will be removed in a future version.
+Instructions for updating:
+The `SyncReplicaOptimizer` class is deprecated. For synchrononous training, please use [Distribution Strategies](https://github.com/tensorflow/tensorflow/tree/master/tensorflow/contrib/distribute).
+INFO:tensorflow:SyncReplicasV2: replicas_to_aggregate=2; total_num_replicas=2
+WARNING:tensorflow:From /users/dporte7/.local/lib/python3.6/site-packages/tensorflow/python/ops/math_ops.py:3066: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+WARNING:tensorflow:From /users/dporte7/.local/lib/python3.6/site-packages/tensorflow/python/ops/data_flow_ops.py:1294: to_int64 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+WARNING:tensorflow:From /users/dporte7/.local/lib/python3.6/site-packages/tensorflow/python/training/sync_replicas_optimizer.py:352: QueueRunner.__init__ (from tensorflow.python.training.queue_runner_impl) is deprecated and will be removed in a future version.
+Instructions for updating:
+To construct input pipelines, use the `tf.data` module.
+INFO:tensorflow:Graph was finalized.
+2019-04-24 13:24:11.186236: I tensorflow/core/distributed_runtime/master_session.cc:1192] Start master session f68b4db7f6fc7997 with config: 
+INFO:tensorflow:Running local_init_op.
+INFO:tensorflow:Done running local_init_op.
+Worker 1,  Epoch: 1 Cost: 1.2017
+Worker 1,  Epoch: 2 Cost: 1.0538
+Worker 1,  Epoch: 3 Cost: 0.9571
+Worker 1,  Epoch: 4 Cost: 0.8883
+Worker 1,  Epoch: 5 Cost: 0.8365
+Worker 1,  Epoch: 6 Cost: 0.7958
+Worker 1,  Epoch: 7 Cost: 0.7631
 Traceback (most recent call last):
-  File "lr_sync.py", line 56, in <module>
-    server = tf.train.Server(clusterSpec[FLAGS.deploy_mode], job_name=FLAGS.job_name, task_index=FLAGS.task_index)
-  File "/users/dporte7/.local/lib/python3.6/site-packages/tensorflow/python/training/server_lib.py", line 148, in __init__
-    self._server = c_api.TF_NewServer(self._server_def.SerializeToString())
-tensorflow.python.framework.errors_impl.UnknownError: Could not start gRPC server
+  File "lr_sync.py", line 146, in <module>
+    _,loss,gs = mon_sess.run([optimizer,cost,global_step],feed_dict={X: batch_x, Y: batch_y})
+  File "/users/dporte7/.local/lib/python3.6/site-packages/tensorflow/python/training/monitored_session.py", line 676, in run
+    run_metadata=run_metadata)
+  File "/users/dporte7/.local/lib/python3.6/site-packages/tensorflow/python/training/monitored_session.py", line 1171, in run
+    run_metadata=run_metadata)
+  File "/users/dporte7/.local/lib/python3.6/site-packages/tensorflow/python/training/monitored_session.py", line 1270, in run
+    raise six.reraise(*original_exc_info)
+  File "/users/dporte7/.local/lib/python3.6/site-packages/six.py", line 693, in reraise
+    raise value
+  File "/users/dporte7/.local/lib/python3.6/site-packages/tensorflow/python/training/monitored_session.py", line 1255, in run
+    return self._sess.run(*args, **kwargs)
+  File "/users/dporte7/.local/lib/python3.6/site-packages/tensorflow/python/training/monitored_session.py", line 1309, in run
+    raise RuntimeError('Run called even after should_stop requested.')
+RuntimeError: Run called even after should_stop requested.
