@@ -1,0 +1,49 @@
+2019-03-08 08:45:23.725355: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 AVX512F FMA
+2019-03-08 08:45:23.760332: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2200000000 Hz
+2019-03-08 08:45:23.765284: I tensorflow/compiler/xla/service/service.cc:150] XLA service 0x389bcf0 executing computations on platform Host. Devices:
+2019-03-08 08:45:23.765330: I tensorflow/compiler/xla/service/service.cc:158]   StreamExecutor device (0): <undefined>, <undefined>
+2019-03-08 08:45:23.769422: I tensorflow/core/distributed_runtime/rpc/grpc_channel.cc:252] Initialize GrpcChannelCache for job worker -> {0 -> localhost:2222}
+2019-03-08 08:45:23.776201: I tensorflow/core/distributed_runtime/rpc/grpc_server_lib.cc:391] Started server with target: grpc://localhost:2222
+WARNING:tensorflow:From code_async_SGD.py:68: read_data_sets (from tensorflow.contrib.learn.python.learn.datasets.mnist) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use alternatives such as official/mnist/dataset.py from tensorflow/models.
+WARNING:tensorflow:From /users/dporte7/.local/lib/python3.6/site-packages/tensorflow/contrib/learn/python/learn/datasets/mnist.py:260: maybe_download (from tensorflow.contrib.learn.python.learn.datasets.base) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please write your own downloading logic.
+WARNING:tensorflow:From /users/dporte7/.local/lib/python3.6/site-packages/tensorflow/contrib/learn/python/learn/datasets/mnist.py:262: extract_images (from tensorflow.contrib.learn.python.learn.datasets.mnist) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use tf.data to implement this functionality.
+WARNING:tensorflow:From /users/dporte7/.local/lib/python3.6/site-packages/tensorflow/contrib/learn/python/learn/datasets/mnist.py:267: extract_labels (from tensorflow.contrib.learn.python.learn.datasets.mnist) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use tf.data to implement this functionality.
+WARNING:tensorflow:From /users/dporte7/.local/lib/python3.6/site-packages/tensorflow/contrib/learn/python/learn/datasets/mnist.py:110: dense_to_one_hot (from tensorflow.contrib.learn.python.learn.datasets.mnist) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use tf.one_hot on tensors.
+WARNING:tensorflow:From /users/dporte7/.local/lib/python3.6/site-packages/tensorflow/contrib/learn/python/learn/datasets/mnist.py:290: DataSet.__init__ (from tensorflow.contrib.learn.python.learn.datasets.mnist) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use alternatives such as official/mnist/dataset.py from tensorflow/models.
+WARNING:tensorflow:From /users/dporte7/.local/lib/python3.6/site-packages/tensorflow/python/framework/op_def_library.py:263: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+WARNING:tensorflow:From /users/dporte7/.local/lib/python3.6/site-packages/tensorflow/python/ops/math_ops.py:3066: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+Extracting MNIST_data/train-images-idx3-ubyte.gz
+Extracting MNIST_data/train-labels-idx1-ubyte.gz
+Extracting MNIST_data/t10k-images-idx3-ubyte.gz
+Extracting MNIST_data/t10k-labels-idx1-ubyte.gz
+train images: (60000, 28, 28)
+train labels: (60000,)
+ test images: (10000, 28, 28)
+ test labels: (10000,)
+epoch: 0 cost=0.3033
+epoch: 2 cost=0.5067
+epoch: 4 cost=0.4526
+epoch: 6 cost=0.4071
+epoch: 8 cost=0.4230
+epoch:10 cost=0.2166
+epoch:12 cost=0.6070
+epoch:14 cost=0.4299
+epoch:16 cost=0.3730
+epoch:18 cost=0.2410
+Accuracy: 90.06%

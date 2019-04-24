@@ -1,0 +1,62 @@
+WARNING:tensorflow:From lr_sync.py:54: read_data_sets (from tensorflow.contrib.learn.python.learn.datasets.mnist) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use alternatives such as official/mnist/dataset.py from tensorflow/models.
+WARNING:tensorflow:From /users/dporte7/.local/lib/python3.6/site-packages/tensorflow/contrib/learn/python/learn/datasets/mnist.py:260: maybe_download (from tensorflow.contrib.learn.python.learn.datasets.base) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please write your own downloading logic.
+WARNING:tensorflow:From /users/dporte7/.local/lib/python3.6/site-packages/tensorflow/contrib/learn/python/learn/datasets/mnist.py:262: extract_images (from tensorflow.contrib.learn.python.learn.datasets.mnist) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use tf.data to implement this functionality.
+Extracting MNIST_data/train-images-idx3-ubyte.gz
+Extracting MNIST_data/train-labels-idx1-ubyte.gz
+WARNING:tensorflow:From /users/dporte7/.local/lib/python3.6/site-packages/tensorflow/contrib/learn/python/learn/datasets/mnist.py:267: extract_labels (from tensorflow.contrib.learn.python.learn.datasets.mnist) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use tf.data to implement this functionality.
+WARNING:tensorflow:From /users/dporte7/.local/lib/python3.6/site-packages/tensorflow/contrib/learn/python/learn/datasets/mnist.py:110: dense_to_one_hot (from tensorflow.contrib.learn.python.learn.datasets.mnist) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use tf.one_hot on tensors.
+Extracting MNIST_data/t10k-images-idx3-ubyte.gz
+Extracting MNIST_data/t10k-labels-idx1-ubyte.gz
+WARNING:tensorflow:From /users/dporte7/.local/lib/python3.6/site-packages/tensorflow/contrib/learn/python/learn/datasets/mnist.py:290: DataSet.__init__ (from tensorflow.contrib.learn.python.learn.datasets.mnist) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use alternatives such as official/mnist/dataset.py from tensorflow/models.
+2019-04-24 13:40:50.079627: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-04-24 13:40:50.109354: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2394190000 Hz
+2019-04-24 13:40:50.112079: I tensorflow/compiler/xla/service/service.cc:150] XLA service 0x2c750c0 executing computations on platform Host. Devices:
+2019-04-24 13:40:50.112111: I tensorflow/compiler/xla/service/service.cc:158]   StreamExecutor device (0): <undefined>, <undefined>
+2019-04-24 13:40:50.114947: I tensorflow/core/distributed_runtime/rpc/grpc_channel.cc:252] Initialize GrpcChannelCache for job ps -> {0 -> 10.10.1.1:3333}
+2019-04-24 13:40:50.114975: I tensorflow/core/distributed_runtime/rpc/grpc_channel.cc:252] Initialize GrpcChannelCache for job worker -> {0 -> 10.10.1.1:2222, 1 -> localhost:2222}
+2019-04-24 13:40:50.118933: I tensorflow/core/distributed_runtime/rpc/grpc_server_lib.cc:391] Started server with target: grpc://localhost:2222
+featureCount->  784 classCount->  10
+trainSize->  55000
+train images: (55000, 784)
+train labels: (55000, 10)
+ test images: (10000, 784)
+ test labels: (10000, 10)
+WARNING:tensorflow:From /users/dporte7/.local/lib/python3.6/site-packages/tensorflow/python/framework/op_def_library.py:263: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+WARNING:tensorflow:From lr_sync.py:121: SyncReplicasOptimizer.__init__ (from tensorflow.python.training.sync_replicas_optimizer) is deprecated and will be removed in a future version.
+Instructions for updating:
+The `SyncReplicaOptimizer` class is deprecated. For synchrononous training, please use [Distribution Strategies](https://github.com/tensorflow/tensorflow/tree/master/tensorflow/contrib/distribute).
+INFO:tensorflow:SyncReplicasV2: replicas_to_aggregate=2; total_num_replicas=2
+WARNING:tensorflow:From /users/dporte7/.local/lib/python3.6/site-packages/tensorflow/python/ops/math_ops.py:3066: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+WARNING:tensorflow:From /users/dporte7/.local/lib/python3.6/site-packages/tensorflow/python/ops/data_flow_ops.py:1294: to_int64 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+WARNING:tensorflow:From /users/dporte7/.local/lib/python3.6/site-packages/tensorflow/python/training/sync_replicas_optimizer.py:352: QueueRunner.__init__ (from tensorflow.python.training.queue_runner_impl) is deprecated and will be removed in a future version.
+Instructions for updating:
+To construct input pipelines, use the `tf.data` module.
+INFO:tensorflow:Graph was finalized.
+2019-04-24 13:40:51.354777: I tensorflow/core/distributed_runtime/master_session.cc:1192] Start master session 7045fd5a7adcfd92 with config: 
+INFO:tensorflow:Running local_init_op.
+INFO:tensorflow:Done running local_init_op.
+Worker 1,  Epoch: 1 Cost: 1.4448 gs: 289
+Worker 1,  Epoch: 2 Cost: 1.1934 gs: 389
+Worker 1,  Epoch: 3 Cost: 1.0490 gs: 489
+Worker 1,  Epoch: 4 Cost: 0.9541 gs: 589
+Worker 1,  Epoch: 5 Cost: 0.8864 gs: 689
+Worker 1,  Epoch: 6 Cost: 0.8353 gs: 789
+Worker 1,  Epoch: 7 Cost: 0.7951 gs: 889
