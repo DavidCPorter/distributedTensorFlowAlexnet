@@ -11,6 +11,10 @@ function terminate_cluster() {
     for i in `seq 0 3`; do
         ssh dporte7@node$i "$CMD" >> sync_serverlog-ps-0.out 2>&1
     done
+    CMD="ps aux | grep python | grep dporte7 | awk -F' ' '{print \$2}' | xargs kill -9"
+    for i in `seq 0 3`; do
+        ssh dporte7@node$i "$CMD" >> serverlog-ps-0.out 2>&1
+    done
     echo "Terminated"
 }
 
