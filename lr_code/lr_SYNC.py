@@ -3,6 +3,8 @@ import numpy as np
 import os
 import time
 from tensorflow.examples.tutorials.mnist import input_data
+from  sklearn.metrics import roc_auc_score
+
 
 # define the command line flags that can be sent
 tf.app.flags.DEFINE_integer("task_index", 0, "Index of task with in the job.")
@@ -128,43 +130,44 @@ elif FLAGS.job_name == "worker":
 
 	# scaff = tf.train.Scaffold(init_op = init_op)
 
-	if is_chief == 0:
-		time.sleep(1)
+		if is_chief == 0:
+			time.sleep(3)
 
-# automates the recovery process
-	with tf.train.MonitoredTrainingSession(master = server.target,is_chief=is_chief,chief_only_hooks = hooks, hooks=stop_hook, checkpoint_dir="/tmp/train_log") as mon_sess:
-		# step = 0
-		# while step <= 800 + mon_sess.run(global_step):
-		while not mon_sess.should_stop():
-		# if is_chief: time.sleep(2)
-			e=0
-			myglob = 78
-			while True:
-				e+=1
-				# num_iter = 55,000/batch_size
-				for count in range(num_iter):
-					myglob+=1
-					offset = count*batch_size
-					batch_x = x_train[offset:(offset+batch_size)]
-					batch_y = y_train[offset:(offset+batch_size)]
+	# automates the recovery process
+		with tf.train.MonitoredTrainingSession(master = server.target,is_chief=is_chief,hooks=stop_hook,chief_only_hooks=hooks, checkpoint_dir="/tmp/train_log") as mon_sess:
+			step = 0
+			# print(global_step)
+			# if is_chief == 1:
+			# 	mon_sess.run(tf.global_variables_initializer())
 
-					# if is_chief==0 and myglob >= 9000:
-					# 	break
-					_,gs,loss = mon_sess.run([optimizer,global_step,cost],feed_dict={X: batch_x, Y: batch_y})
-					# print(gs)
+			#need to train the entire epoch aka the whole data set in each iteration of this loop
+			# e=0
+			# mon_sess.run(tf.global_variables_initializer())
 
+			while not mon_sess.should_stop():
+				for e in range(epochs):
+					# num_iter = 55,000/batch_size
+					for count in range(num_iter):
+						offset = count*batch_size
+						batch_x = x_train[offset:(offset+batch_size)]
+						batch_y = y_train[offset:(offset+batch_size)]
+						_,loss,gs = mon_sess.run([optimizer,cost,global_step],feed_dict={X: batch_x, Y: batch_y})
+					print('Worker %d, ' % int(FLAGS.task_index), "Epoch:", '%d' % (e+1),
+						'Cost: %.4f'% float(loss))
 
-				print('Worker %d, ' % int(FLAGS.task_index), "Epoch:", '%d' % (e),
-					'Cost: %.4f'% float(loss))
-				print("gs->", myglob)
+				print('BROKE OUT')
+				batch_x = x_test[:(0+batch_size)]
+				batch_y = y_test[:(0+batch_size)]
 
-				if is_chief==0 and myglob >= 9000:
-					break
-		print("loop break successful")
-		correct_pred = tf.equal(tf.argmax(y_pred, 1), tf.argmax(Y, 1))
-		accuracy = tf.reduce_mean(tf.cast(correct_pred, tf.float32))
-		acc = accuracy.eval({X: x_test, Y: y_test})
-		print(f'Accuracy: {acc * 100:.2f}%')
+				# pred = mon_sess.run(y_pred, {X: batch_x})
+				predictResult,lossResult,gs = mon_sess.run([y_pred,cost,global_step],feed_dict={X: batch_x, Y: batch_y})
+
+				print('auc :%f  loss:%f'%(roc_auc_score(np.array(batch_y), predictResult),lossResult))
+				# correct_pred = tf.equal(tf.argmax(pred, 1), tf.argmax(Y, 1))
+				# accuracy = tf.reduce_mean(tf.cast(correct_pred, tf.float32))
+				# acc = accuracy.eval({X: x_test, Y: y_test})
+				# print(f'Accuracy: {acc * 100:.2f}%')
+
 
 
 
