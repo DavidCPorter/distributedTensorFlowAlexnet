@@ -80,7 +80,7 @@ elif FLAGS.job_name == "worker":
 	# hyperparameters
 	learning_rate = 0.1
 	epochs = 10
-	batch_size = 55
+	batch_size = 550
 	#
 	num_iter = int(trainSize // batch_size)
 
@@ -135,14 +135,6 @@ elif FLAGS.job_name == "worker":
 
 	# automates the recovery process
 		with tf.train.MonitoredTrainingSession(master = server.target,is_chief=is_chief,hooks=stop_hook,chief_only_hooks=hooks, checkpoint_dir="/tmp/train_log") as mon_sess:
-			step = 0
-			# print(global_step)
-			# if is_chief == 1:
-			# 	mon_sess.run(tf.global_variables_initializer())
-
-			#need to train the entire epoch aka the whole data set in each iteration of this loop
-			# e=0
-			# mon_sess.run(tf.global_variables_initializer())
 
 			while not mon_sess.should_stop():
 				for e in range(epochs):
@@ -159,14 +151,9 @@ elif FLAGS.job_name == "worker":
 				batch_x = x_test[:(0+batch_size)]
 				batch_y = y_test[:(0+batch_size)]
 
-				# pred = mon_sess.run(y_pred, {X: batch_x})
-				predictResult,lossResult,gs = mon_sess.run([y_pred,cost,global_step],feed_dict={X: batch_x, Y: batch_y})
-
+				predictResult,lossResult,gs = mon_sess.run([y_pred,cost,global_step],feed_dict={X: x_test, Y: y_test})
 				print('auc :%f  loss:%f'%(roc_auc_score(np.array(batch_y), predictResult),lossResult))
-				# correct_pred = tf.equal(tf.argmax(pred, 1), tf.argmax(Y, 1))
-				# accuracy = tf.reduce_mean(tf.cast(correct_pred, tf.float32))
-				# acc = accuracy.eval({X: x_test, Y: y_test})
-				# print(f'Accuracy: {acc * 100:.2f}%')
+				# mon_sess.close()
 
 
 
