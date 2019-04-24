@@ -131,7 +131,7 @@ elif FLAGS.job_name == "worker":
 	# scaff = tf.train.Scaffold(init_op = init_op)
 
 		if is_chief == 0:
-			time.sleep(3)
+			time.sleep(1)
 
 	# automates the recovery process
 		with tf.train.MonitoredTrainingSession(master = server.target,is_chief=is_chief,hooks=stop_hook,chief_only_hooks=hooks, checkpoint_dir="/tmp/train_log") as mon_sess:
@@ -139,14 +139,21 @@ elif FLAGS.job_name == "worker":
 			while not mon_sess.should_stop():
 				for e in range(epochs):
 					# num_iter = 55,000/batch_size
+					if is_chief == 0:
+						time.sleep(1)
 					for count in range(num_iter):
 						offset = count*batch_size
 						batch_x = x_train[offset:(offset+batch_size)]
 						batch_y = y_train[offset:(offset+batch_size)]
 						_,loss,gs = mon_sess.run([optimizer,cost,global_step],feed_dict={X: batch_x, Y: batch_y})
-					print('Worker %d, ' % int(FLAGS.task_index), "Epoch:", '%d' % (e+1),
-						'Cost: %.4f'% float(loss))
 
+					print('Worker %d, ' % int(FLAGS.task_index), "Epoch:", '%d' % (e+1),
+						'Cost: %.4f'% float(loss),"gs:","%d"%(gs))
+					if is_chief == 0 and gs > 850:
+						break
+
+				if is_chief == 0:
+					break
 				print('BROKE OUT')
 				batch_x = x_test[:(0+batch_size)]
 				batch_y = y_test[:(0+batch_size)]
