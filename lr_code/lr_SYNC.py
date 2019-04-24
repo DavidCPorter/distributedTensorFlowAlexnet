@@ -155,8 +155,8 @@ elif FLAGS.job_name == "worker":
 				if is_chief == 0:
 					break
 				print('BROKE OUT')
-				batch_x = x_test[:(0+batch_size)]
-				batch_y = y_test[:(0+batch_size)]
+				batch_x = x_test
+				batch_y = y_test
 
 				predictResult,lossResult,gs = mon_sess.run([y_pred,cost,global_step],feed_dict={X: batch_x, Y: batch_y})
 				print('auc :%f  loss:%f'%(roc_auc_score(np.array(batch_y), predictResult),lossResult))

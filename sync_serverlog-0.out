@@ -1,10 +1,10 @@
 WARNING:tensorflow:From lr_sync.py:54: read_data_sets (from tensorflow.contrib.learn.python.learn.datasets.mnist) is deprecated and will be removed in a future version.
 Instructions for updating:
 Please use alternatives such as official/mnist/dataset.py from tensorflow/models.
+Extracting MNIST_data/train-images-idx3-ubyte.gz
 WARNING:tensorflow:From /users/dporte7/.local/lib/python3.6/site-packages/tensorflow/contrib/learn/python/learn/datasets/mnist.py:260: maybe_download (from tensorflow.contrib.learn.python.learn.datasets.base) is deprecated and will be removed in a future version.
 Instructions for updating:
 Please write your own downloading logic.
-Extracting MNIST_data/train-images-idx3-ubyte.gz
 WARNING:tensorflow:From /users/dporte7/.local/lib/python3.6/site-packages/tensorflow/contrib/learn/python/learn/datasets/mnist.py:262: extract_images (from tensorflow.contrib.learn.python.learn.datasets.mnist) is deprecated and will be removed in a future version.
 Instructions for updating:
 Please use tf.data to implement this functionality.
@@ -20,13 +20,13 @@ Extracting MNIST_data/t10k-labels-idx1-ubyte.gz
 WARNING:tensorflow:From /users/dporte7/.local/lib/python3.6/site-packages/tensorflow/contrib/learn/python/learn/datasets/mnist.py:290: DataSet.__init__ (from tensorflow.contrib.learn.python.learn.datasets.mnist) is deprecated and will be removed in a future version.
 Instructions for updating:
 Please use alternatives such as official/mnist/dataset.py from tensorflow/models.
-2019-04-24 13:36:11.516681: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
-2019-04-24 13:36:11.544342: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2394320000 Hz
-2019-04-24 13:36:11.547210: I tensorflow/compiler/xla/service/service.cc:150] XLA service 0x218ed70 executing computations on platform Host. Devices:
-2019-04-24 13:36:11.547246: I tensorflow/compiler/xla/service/service.cc:158]   StreamExecutor device (0): <undefined>, <undefined>
-2019-04-24 13:36:11.549920: I tensorflow/core/distributed_runtime/rpc/grpc_channel.cc:252] Initialize GrpcChannelCache for job ps -> {0 -> 10.10.1.1:3333}
-2019-04-24 13:36:11.549948: I tensorflow/core/distributed_runtime/rpc/grpc_channel.cc:252] Initialize GrpcChannelCache for job worker -> {0 -> localhost:2222, 1 -> 10.10.1.2:2222}
-2019-04-24 13:36:11.553823: I tensorflow/core/distributed_runtime/rpc/grpc_server_lib.cc:391] Started server with target: grpc://localhost:2222
+2019-04-24 13:40:50.077894: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-04-24 13:40:50.087266: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2394320000 Hz
+2019-04-24 13:40:50.089778: I tensorflow/compiler/xla/service/service.cc:150] XLA service 0x2806240 executing computations on platform Host. Devices:
+2019-04-24 13:40:50.089818: I tensorflow/compiler/xla/service/service.cc:158]   StreamExecutor device (0): <undefined>, <undefined>
+2019-04-24 13:40:50.091772: I tensorflow/core/distributed_runtime/rpc/grpc_channel.cc:252] Initialize GrpcChannelCache for job ps -> {0 -> 10.10.1.1:3333}
+2019-04-24 13:40:50.091789: I tensorflow/core/distributed_runtime/rpc/grpc_channel.cc:252] Initialize GrpcChannelCache for job worker -> {0 -> localhost:2222, 1 -> 10.10.1.2:2222}
+2019-04-24 13:40:50.095463: I tensorflow/core/distributed_runtime/rpc/grpc_server_lib.cc:391] Started server with target: grpc://localhost:2222
 featureCount->  784 classCount->  10
 trainSize->  55000
 train images: (55000, 784)
@@ -55,7 +55,7 @@ WARNING:tensorflow:From /users/dporte7/.local/lib/python3.6/site-packages/tensor
 Instructions for updating:
 Use standard file APIs to check for files with this prefix.
 INFO:tensorflow:Restoring parameters from /tmp/train_log/model.ckpt-16
-2019-04-24 13:36:11.800668: I tensorflow/core/distributed_runtime/master_session.cc:1192] Start master session e867d53955e5b075 with config: 
+2019-04-24 13:40:50.319849: I tensorflow/core/distributed_runtime/master_session.cc:1192] Start master session 9b1a96069f152caa with config: 
 WARNING:tensorflow:From /users/dporte7/.local/lib/python3.6/site-packages/tensorflow/python/training/saver.py:1070: get_checkpoint_mtimes (from tensorflow.python.training.checkpoint_management) is deprecated and will be removed in a future version.
 Instructions for updating:
 Use standard file utilities to get mtimes.
@@ -64,21 +64,21 @@ INFO:tensorflow:Done running local_init_op.
 INFO:tensorflow:Saving checkpoints for 16 into /tmp/train_log/model.ckpt.
 Worker 0,  Epoch: 1 Cost: 4.6288 gs: 65
 Worker 0,  Epoch: 2 Cost: 2.9860 gs: 115
-INFO:tensorflow:global_step/sec: 95.1762
+INFO:tensorflow:global_step/sec: 95.4022
 Worker 0,  Epoch: 3 Cost: 2.2185 gs: 165
-INFO:tensorflow:global_step/sec: 112.159
-Worker 0,  Epoch: 4 Cost: 1.6057 gs: 249
-INFO:tensorflow:global_step/sec: 64.8828
-Worker 0,  Epoch: 5 Cost: 1.2742 gs: 349
-INFO:tensorflow:global_step/sec: 65.1817
-Worker 0,  Epoch: 6 Cost: 1.0980 gs: 449
-INFO:tensorflow:global_step/sec: 64.7674
-Worker 0,  Epoch: 7 Cost: 0.9873 gs: 549
-INFO:tensorflow:global_step/sec: 65.0627
-Worker 0,  Epoch: 8 Cost: 0.9107 gs: 649
-INFO:tensorflow:global_step/sec: 64.8434
-Worker 0,  Epoch: 9 Cost: 0.8540 gs: 749
-INFO:tensorflow:global_step/sec: 64.1517
-Worker 0,  Epoch: 10 Cost: 0.8100 gs: 849
+INFO:tensorflow:global_step/sec: 107.472
+Worker 0,  Epoch: 4 Cost: 1.6587 gs: 239
+INFO:tensorflow:global_step/sec: 64.0891
+Worker 0,  Epoch: 5 Cost: 1.2990 gs: 339
+INFO:tensorflow:global_step/sec: 64.5428
+Worker 0,  Epoch: 6 Cost: 1.1128 gs: 439
+INFO:tensorflow:global_step/sec: 64.4149
+Worker 0,  Epoch: 7 Cost: 0.9972 gs: 539
+INFO:tensorflow:global_step/sec: 64.7824
+Worker 0,  Epoch: 8 Cost: 0.9177 gs: 639
+INFO:tensorflow:global_step/sec: 64.1367
+Worker 0,  Epoch: 9 Cost: 0.8592 gs: 739
+INFO:tensorflow:global_step/sec: 64.8478
+Worker 0,  Epoch: 10 Cost: 0.8141 gs: 839
 BROKE OUT
-auc :0.957599  loss:1.263218
+auc :0.969373  loss:1.043248
