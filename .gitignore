@@ -2,3 +2,4 @@
 *sftp-config.json
 MNIST_data/
 *log/
+*.out
