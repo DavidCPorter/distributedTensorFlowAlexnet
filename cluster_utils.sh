@@ -33,10 +33,31 @@ function install_tensorflow() {
         exit 
     fi
     USER=$1
+    PK_LIST=('tensorflow' 'sklearn')
 
     for i in `seq 0 3`; do
-        nohup ssh $USER@node$i "sudo apt update; sudo apt install --assume-yes htop python3-pip python-dev; sudo pip3 install tensorflow"
+        nohup ssh $USER@node$i "sudo apt update; sudo apt install --assume-yes htop python3-pip python-dev;"
     done
+
+    for p in ${PK_LIST[@]}; do
+        echo "installing $p"
+        install_py_package $USER $p
+    done
+}
+
+function install_py_package() {
+    
+    if [ "$#" -ne 2 ]; then
+        echo "Usage: install_tensorflow <username> <package_name>"
+        exit 
+    fi
+    USER=$1
+    PACKAGE=$2
+
+    for i in `seq 0 3`; do
+        nohup ssh $USER@node$i "sudo pip3 install $PACKAGE;"
+    done
+
 }
 
 
