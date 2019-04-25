@@ -65,16 +65,16 @@ function start_cluster() {
         if [ "$CLUSTER_MODE" = "single" ]; then
             nohup ssh $USER@node0 "cd ~/tf ; python3 $USER --deploy_mode=single" > sync_serverlog-0.out 2>&1
         elif [ "$CLUSTER_MODE" = "cluster" ]; then
-            nohup ssh $USER@node0 "cd ~/tf ; python3 -u $USER --deploy_mode=cluster  --job_name=ps" > sync_serverlog-ps-0.out 2>&1&
-            nohup ssh $USER@node0 "cd ~/tf ; python3 -u $USER --deploy_mode=cluster  --task_index=0" > sync_serverlog-0.out 2>&1&
-            nohup ssh $USER@node1 "cd ~/tf ; python3 -u $USER --deploy_mode=cluster  --task_index=1" > sync_serverlog-1.out 2>&1
+            nohup ssh $USER@node0 "cd ~/tf ; python3 -u $PY_SCRIPT --deploy_mode=cluster  --job_name=ps" > sync_serverlog-ps-0.out 2>&1&
+            nohup ssh $USER@node0 "cd ~/tf ; python3 -u $PY_SCRIPT --deploy_mode=cluster  --task_index=0" > sync_serverlog-0.out 2>&1&
+            nohup ssh $USER@node1 "cd ~/tf ; python3 -u $PY_SCRIPT --deploy_mode=cluster  --task_index=1" > sync_serverlog-1.out 2>&1
 
         else
-            nohup ssh $USER@node0 "cd ~/tf ; python3 $USER --deploy_mode=cluster2  --job_name=ps" > sync_serverlog-ps-0.out 2>&1&
-            nohup ssh $USER@node0 "cd ~/tf ; python3 $USER --deploy_mode=cluster2  --task_index=0" > sync_serverlog-0.out 2>&1&
-            nohup ssh $USER@node1 "cd ~/tf ; python3 $USER --deploy_mode=cluster2  --task_index=1" > sync_serverlog-1.out 2>&1&
-            nohup ssh $USER@node2 "cd ~/tf ; python3 $USER --deploy_mode=cluster2  --task_index=2" > sync_serverlog-2.out 2>&1&
-            nohup ssh $USER@node3 "cd ~/tf ; python3 $USER --deploy_mode=cluster2  --task_index=3" > sync_serverlog-3.out 2>&1
+            nohup ssh $USER@node0 "cd ~/tf ; python3 $PY_SCRIPT --deploy_mode=cluster2  --job_name=ps" > sync_serverlog-ps-0.out 2>&1&
+            nohup ssh $USER@node0 "cd ~/tf ; python3 $PY_SCRIPT --deploy_mode=cluster2  --task_index=0" > sync_serverlog-0.out 2>&1&
+            nohup ssh $USER@node1 "cd ~/tf ; python3 $PY_SCRIPT --deploy_mode=cluster2  --task_index=1" > sync_serverlog-1.out 2>&1&
+            nohup ssh $USER@node2 "cd ~/tf ; python3 $PY_SCRIPT --deploy_mode=cluster2  --task_index=2" > sync_serverlog-2.out 2>&1&
+            nohup ssh $USER@node3 "cd ~/tf ; python3 $PY_SCRIPT --deploy_mode=cluster2  --task_index=3" > sync_serverlog-3.out 2>&1
         fi
     fi
 }
