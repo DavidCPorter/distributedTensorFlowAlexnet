@@ -35,7 +35,7 @@ function install_tensorflow() {
     USER=$1
 
     for i in `seq 0 3`; do
-        nohup ssh $USER@node$i "sudo apt update; sudo apt install --assume-yes python-pip python-dev; sudo pip install tensorflow"
+        nohup ssh $USER@node$i "sudo apt update; sudo apt install --assume-yes htop python3-pip python-dev; sudo pip3 install tensorflow"
     done
 }
 
@@ -54,7 +54,6 @@ function start_cluster() {
         for i in `seq 0 3`; do
             # added log for tensorboard
             ssh $USER@node$i "mkdir -p $TF_RUN_DIR"
-            pwd
             scp lr_code/$PY_SCRIPT $USER@node$i:$TF_RUN_DIR
 
         done

@@ -35,7 +35,7 @@ function install_tensorflow() {
     USER=$1
 
     for i in `seq 0 3`; do
-        nohup ssh $USER@node$i "sudo apt update; sudo apt install --assume-yes python-pip python-dev; sudo pip install tensorflow"
+        nohup ssh $USER@node$i "sudo apt update; sudo apt install --assume-yes htop python3-pip python-dev; sudo pip3 install tensorflow"
     done
 }
 

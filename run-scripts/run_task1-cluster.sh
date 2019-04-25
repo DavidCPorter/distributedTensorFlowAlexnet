@@ -2,7 +2,7 @@
 #
 # Usage: run_task1-cluster.sh <username>
 
-if ["$#" -ne 1 ]; then
+if [ "$#" -ne 1 ]; then
 	echo "Usage: run_task1-cluster.sh <username>"
 	exit
 fi

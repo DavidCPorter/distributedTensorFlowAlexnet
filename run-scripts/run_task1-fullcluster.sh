@@ -2,7 +2,7 @@
 #
 # Usage: run_task1-fullcluster.sh <username>
 
-if ["$#" -ne 1 ]; then
+if [ "$#" -ne 1 ]; then
 	echo "Usage: run_task1-fullcluster.sh <username>"
 	exit
 fi
