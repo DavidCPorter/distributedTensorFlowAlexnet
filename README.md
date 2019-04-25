@@ -6,8 +6,8 @@
 
 In order to properly set up the Tensorflow framework for the given network configuration (cluster of 4 machines) do what follows:
 
-- Set up parallel-ssh on the cluster:
-	- Do `ssh-keygen -t rsa` on the node-0
+- Set up parallel-ssh on the cluster; for each machine:
+	- Do `ssh-keygen -t rsa`
 	- Copy the public key into __~/.ssh/authorized_keys__ for each machine in the cluster
 	- On the master add into a file called __slaves__ the hostname of the nodes in the cluster
 
