@@ -2,7 +2,7 @@
 #
 # Usage: run_task2.sh <username>
 
-if ["$#" -ne 1 ]; then
+if [ "$#" -ne 1 ]; then
 	echo "Usage: run_task2.sh <username>"
 	exit
 fi
