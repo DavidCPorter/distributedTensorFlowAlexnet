@@ -33,11 +33,10 @@ function install_tensorflow() {
         exit 
     fi
     USER=$1
-    PK_LIST=('tensorflow' 'sklearn')
+    PK_LIST=('tensorflow' 'scikit-learn' 'sklearn')
 
-    for i in `seq 0 3`; do
-        nohup ssh $USER@node$i "sudo apt update; sudo apt install --assume-yes htop python3-pip python-dev;"
-    done
+    
+    nohup parallel-ssh -i -H "$USER@node0 $USER@node1 $USER@node2 $USER@node3" "sudo apt update; sudo apt install --assume-yes htop dstat sysstat python3-pip python-dev;"
 
     for p in ${PK_LIST[@]}; do
         echo "installing $p"
@@ -54,9 +53,7 @@ function install_py_package() {
     USER=$1
     PACKAGE=$2
 
-    for i in `seq 0 3`; do
-        nohup ssh $USER@node$i "sudo pip3 install $PACKAGE;"
-    done
+    nohup parallel-ssh -i -H "$USER@node0 $USER@node1 $USER@node2 $USER@node3" "sudo pip3 install $PACKAGE;"
 
 }
 
@@ -95,5 +92,43 @@ function start_cluster() {
             nohup ssh $USER@node2 "cd ~/tf ; python3 $PY_SCRIPT --deploy_mode=cluster2  --task_index=2" > serverlog-2.out 2>&1&
             nohup ssh $USER@node3 "cd ~/tf ; python3 $PY_SCRIPT --deploy_mode=cluster2  --task_index=3" > serverlog-3.out 2>&1
         fi
+    fi
+}
+
+function start_cluster_with_dstat(){
+    if [ "$#" -ne 3 ]; then
+        echo "Usage: start_cluster <username> <python script> <cluster mode>"
+        echo "Here, <python script> contains the cluster spec that assigns an ID to all server."
+    else
+        USER=$1
+        PY_SCRIPT=$2
+        CLUSTER_MODE=$3
+        PY_NAME=$(echo $PY_SCRIPT | cut -d '.' -f1)
+
+        echo 'Starting dstat on the appropriate machines'
+
+        nohup parallel-ssh -i -H "$USER@node0 $USER@node1 $USER@node2 $USER@node3" "rm ~/node*_dstat_$PY_NAME.csv"
+
+        if [ "$CLUSTER_MODE" = "single" ]; then
+            nohup ssh $USER@node0 "dstat --output node0_dstat_$PY_NAME.csv &>/dev/null &"
+        elif [ "$CLUSTER_MODE" = "cluster" ]; then
+            nohup ssh $USER@node0 "dstat --output node0_dstat_$PY_NAME.csv &>/dev/null &"
+            nohup ssh $USER@node1 "dstat --output node1_dstat_$PY_NAME.csv &>/dev/null &"
+        else
+            nohup ssh $USER@node0 "dstat --output node0_dstat_$PY_NAME.csv &>/dev/null &"
+            nohup ssh $USER@node1 "dstat --output node1_dstat_$PY_NAME.csv &>/dev/null &"
+            nohup ssh $USER@node2 "dstat --output node2_dstat_$PY_NAME.csv &>/dev/null &"
+            nohup ssh $USER@node3 "dstat --output node3_dstat_$PY_NAME.csv &>/dev/null &"
+        fi
+        start_cluster $USER $PY_SCRIPT $CLUSTER_MODE
+
+        echo 'Stopping dstat'
+        nohup parallel-ssh -i -H "$USER@node0 $USER@node1 $USER@node2 $USER@node3" "ps aux | grep -i 'dstat*' | xargs kill -9"
+        
+        echo 'Coping the profiling data locally'
+        for i in `seq 0 3`; do
+            scp $USER@node$i:"~/node${i}_dstat_$PY_NAME.csv" lr_data/
+        done
+        echo 'Done'
     fi
 }

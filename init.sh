@@ -15,7 +15,6 @@ HOSTS='./hosts'
 # Checks ssh connection and fingerprints
 #ssh-keyscan -f $HOSTS >> ~/.ssh/known_hosts
 
-
 # Installs trensorflow on the cluster
 source cluster_utils.sh
 install_tensorflow $USERNAME

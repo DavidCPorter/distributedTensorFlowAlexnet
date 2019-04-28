@@ -3,3 +3,5 @@
 MNIST_data/
 *log/
 *.out
+*.DS_Store
+*__MACOSX/*
