@@ -4,4 +4,4 @@ MNIST_data/
 *log/
 *.out
 *.DS_Store
-./alexnet/__MACOSX/*
+**/__MACOSX/*
