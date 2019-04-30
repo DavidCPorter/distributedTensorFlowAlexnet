@@ -48,14 +48,14 @@ def original(images, labels, num_classes, total_num_examples, devices=None, is_t
 
     with tf.device(devices[0]):
         builder = ModelBuilder()
-	print('num_classes: ' + str(num_classes))
+        print('num_classes: ' + str(num_classes))
         net, logits, total_loss = alexnet_inference(builder, images, labels, num_classes)
 
         if not is_train:
             return alexnet_eval(net, labels)
 
         global_step = builder.ensure_global_step()
-	print('total_num_examples: ' + str(total_num_examples))
+        print('total_num_examples: ' + str(total_num_examples))
         train_op = train(total_loss, global_step, total_num_examples)
     return net, logits, total_loss, train_op, global_step
 
@@ -71,3 +71,4 @@ def distribute(images, labels, num_classes, total_num_examples, devices, is_trai
     #    read how TensorFlow Variables work, and considering using tf.variable_scope.
     # 5. On the parameter server node, apply gradients.
     # 6. return required values.
+    return

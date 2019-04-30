@@ -73,7 +73,7 @@ function start_cluster() {
         for i in `seq 0 3`; do
             # added log for tensorboard
             ssh $USER@node$i "mkdir -p $TF_RUN_DIR"
-            scp lr_code/$PY_SCRIPT $USER@node$i:$TF_RUN_DIR
+            scp ./$PY_SCRIPT $USER@node$i:$TF_RUN_DIR
 
         done
         echo "Starting tensorflow servers on all hosts based on the spec in $PY_SCRIPT"
@@ -131,5 +131,43 @@ function start_cluster_with_dstat(){
             scp $USER@node$i:"~/node${i}_dstat_$PY_NAME.csv" lr_data/
         done
         echo 'Done'
+    fi
+}
+
+function start_cluster_alex() {
+    if [ "$#" -ne 3 ]; then
+        echo "Usage: start_cluster <username> <python script> <cluster mode>"
+        echo "Here, <python script> contains the cluster spec that assigns an ID to all server."
+    else
+        USER=$1
+        PY_SCRIPT=$2
+        CLUSTER_MODE=$3
+
+        echo "Create $TF_RUN_DIR on remote hosts if they do not exist."
+        echo "Copying the script to all the remote hosts."
+        for i in `seq 0 3`; do
+            # added log for tensorboard
+            ssh $USER@node$i "mkdir -p $TF_RUN_DIR"
+            scp -r ../alexnet $USER@node$i:$TF_RUN_DIR
+        done
+
+        echo "Starting tensorflow servers on all hosts based on the spec in $PY_SCRIPT"
+        echo "The server output is logged to serverlog-i.out, where i = 0, ..., 3 are the VM numbers."
+        if [ "$CLUSTER_MODE" = "single" ]; then
+            nohup ssh $USER@node0 "cd ~/tf/alexnet ; python3 ./$PY_SCRIPT --deploy_mode=single &>./serverlog-0.out &"
+            echo "Server running"
+            nohup ssh $USER@node0 "cd ~/tf/alexnet ; python3 -m AlexNet.scripts.train --mode single" > serverlog-0.out 2>&1
+        elif [ "$CLUSTER_MODE" = "cluster" ]; then
+            nohup ssh $USER@node0 "cd ~/tf ; python3 -u $PY_SCRIPT --deploy_mode=cluster  --job_name=ps" > serverlog-ps-0.out 2>&1&
+            nohup ssh $USER@node0 "cd ~/tf ; python3 -u $PY_SCRIPT --deploy_mode=cluster  --task_index=0" > serverlog-0.out 2>&1&
+            nohup ssh $USER@node1 "cd ~/tf ; python3 -u $PY_SCRIPT --deploy_mode=cluster  --task_index=1" > serverlog-1.out 2>&1
+            # ssh $USER@node0 "tensorboard --logdir $TF_LOG_DIR"
+        else
+            nohup ssh $USER@node0 "cd ~/tf ; python3 -u $PY_SCRIPT --deploy_mode=cluster2  --job_name=ps" > serverlog-ps-0.out 2>&1&
+            nohup ssh $USER@node0 "cd ~/tf ; python3 -u $PY_SCRIPT --deploy_mode=cluster2  --task_index=0" > serverlog-0.out 2>&1&
+            nohup ssh $USER@node1 "cd ~/tf ; python3 -u $PY_SCRIPT --deploy_mode=cluster2  --task_index=1" > serverlog-1.out 2>&1&
+            nohup ssh $USER@node2 "cd ~/tf ; python3 -u $PY_SCRIPT --deploy_mode=cluster2  --task_index=2" > serverlog-2.out 2>&1&
+            nohup ssh $USER@node3 "cd ~/tf ; python3 -u $PY_SCRIPT --deploy_mode=cluster2  --task_index=3" > serverlog-3.out 2>&1
+        fi
     fi
 }
