@@ -5,3 +5,4 @@ MNIST_data/
 *.out
 *.DS_Store
 **/__MACOSX/
+**/.vscode/
