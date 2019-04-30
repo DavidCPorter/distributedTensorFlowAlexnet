@@ -7,7 +7,7 @@ from tensorflow.examples.tutorials.mnist import input_data
 BATCH_SIZE = 55
 TRAINING_STEPS = 10000
 PRINT_EVERY = 200
-LOG_DIR = "/users/claudio/"
+LOG_DIR = "./"
 
 # define the command line flags that can be sent
 tf.app.flags.DEFINE_integer("task_index", 0, "Index of task with in the job.")

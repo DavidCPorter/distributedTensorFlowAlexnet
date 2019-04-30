@@ -71,4 +71,27 @@ def distribute(images, labels, num_classes, total_num_examples, devices, is_trai
     #    read how TensorFlow Variables work, and considering using tf.variable_scope.
     # 5. On the parameter server node, apply gradients.
     # 6. return required values.
+        """Build inference"""
+    if devices is None:
+        devices = [None]
+
+    def configure_optimizer(global_step, total_num_steps):
+        """Return a configured optimizer"""
+        def exp_decay(start, tgtFactor, num_stairs):
+            decay_step = total_num_steps / (num_stairs - 1)
+            decay_rate = (1 / tgtFactor) ** (1 / (num_stairs - 1))
+            return tf.train.exponential_decay(start, global_step, decay_step, decay_rate,
+                                              staircase=True)
+
+        def lparam(learning_rate, momentum):
+            return {
+                'learning_rate': learning_rate,
+                'momentum': momentum
+            }
+
+        return HybridMomentumOptimizer({
+            'weights': lparam(exp_decay(0.001, 250, 4), 0.9),
+            'biases': lparam(exp_decay(0.002, 10, 2), 0.9),
+        })
+
     return
