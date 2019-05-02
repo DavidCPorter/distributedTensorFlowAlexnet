@@ -7,7 +7,7 @@ function terminate_cluster() {
 
     if [ "$#" -ne 1 ]; then
         echo "Usage: terminate_cluster <username>"
-        exit 
+        exit
     fi
     USER=$1
 
@@ -30,7 +30,7 @@ function install_tensorflow() {
 
     if [ "$#" -ne 1 ]; then
         echo "Usage: install_tensorflow <username>"
-        exit 
+        exit
     fi
     USER=$1
     PK_LIST=('tensorflow' 'scikit-learn' 'sklearn')
@@ -46,10 +46,10 @@ function install_tensorflow() {
 }
 
 function install_py_package() {
-    
+
     if [ "$#" -ne 2 ]; then
         echo "Usage: install_tensorflow <username> <package_name>"
-        exit 
+        exit
     fi
     USER=$1
     PACKAGE=$2
@@ -125,7 +125,7 @@ function start_cluster_with_dstat(){
 
         echo 'Stopping dstat'
         nohup parallel-ssh -i -H "$USER@node0 $USER@node1 $USER@node2 $USER@node3" "ps aux | grep -i 'dstat*' | xargs kill -9"
-        
+
         echo 'Coping the profiling data locally'
         for i in `seq 0 3`; do
             scp $USER@node$i:"~/node${i}_dstat_$PY_NAME.csv" lr_data/
@@ -158,9 +158,13 @@ function start_cluster_alex() {
             echo "Server running"
             nohup ssh $USER@node0 "cd ~/tf/alexnet ; python3 -m AlexNet.scripts.train --mode single" > serverlog-0.out 2>&1
         elif [ "$CLUSTER_MODE" = "cluster" ]; then
-            nohup ssh $USER@node0 "cd ~/tf ; python3 -u $PY_SCRIPT --deploy_mode=cluster  --job_name=ps" > serverlog-ps-0.out 2>&1&
-            nohup ssh $USER@node0 "cd ~/tf ; python3 -u $PY_SCRIPT --deploy_mode=cluster  --task_index=0" > serverlog-0.out 2>&1&
-            nohup ssh $USER@node1 "cd ~/tf ; python3 -u $PY_SCRIPT --deploy_mode=cluster  --task_index=1" > serverlog-1.out 2>&1
+            nohup ssh $USER@node0 "cd ~/tf/alexnet ; python3 ./$PY_SCRIPT --deploy_mode=cluster  --job_name=ps" > serverlog-ps-0.out 2>&1&
+            nohup ssh $USER@node0 "cd ~/tf/alexnet ; python3 ./$PY_SCRIPT --deploy_mode=cluster  --task_index=0" > serverlog-0.out 2>&1&
+            nohup ssh $USER@node1 "cd ~/tf/alexnet ; python3 ./$PY_SCRIPT --deploy_mode=cluster  --task_index=1" > serverlog-1.out 2>&1&
+            nohup ssh $USER@node0 "cd ~/tf/alexnet ; python3 -m AlexNet.scripts.train --mode cluster --batch_size 10 --batch_num 10 --dataset fake_data" > train_serverlog-0.out 2>&1
+            # --eval option throwing erros. 
+
+
             # ssh $USER@node0 "tensorboard --logdir $TF_LOG_DIR"
         else
             nohup ssh $USER@node0 "cd ~/tf ; python3 -u $PY_SCRIPT --deploy_mode=cluster2  --job_name=ps" > serverlog-ps-0.out 2>&1&

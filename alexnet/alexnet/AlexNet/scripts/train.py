@@ -75,6 +75,7 @@ def evaluate(net_configname, batch_size, devices=None, target=None,
             tf.summary.FileWriter(tb_dir, sess.graph)
 
             sess.run(tfhelper.initialize_op())
+            #sess.run(tf.local_variables_initializer())
             ckpt = tf.train.get_checkpoint_state(train_dir)
             if ckpt and ckpt.model_checkpoint_path:
                 # Restores from checkpoint
@@ -107,41 +108,41 @@ def evaluate(net_configname, batch_size, devices=None, target=None,
 
 def train(net_configname, batch_size, devices=None, target=None,
           batch_num=None, tb_dir=None, train_dir=None, benchmark_name=None):
-    with tf.Graph().as_default():
-        if tb_dir is None:
-            tb_dir = '/tmp/workspace/tflogs'
-        if train_dir is None:
-            train_dir = './model'
-        if benchmark_name is None:
-            benchmark_name = 'fake_data'
+    # with tf.Graph().as_default():
+    if tb_dir is None:
+        tb_dir = '/tmp/workspace/tflogs'
+    if train_dir is None:
+        train_dir = './model'
+    if benchmark_name is None:
+        benchmark_name = 'fake_data'
 
-        if not os.path.exists(train_dir):
-            os.makedirs(train_dir)
+    if not os.path.exists(train_dir):
+        os.makedirs(train_dir)
 
-        input_data = benchmarks[benchmark_name]
+    input_data = benchmarks[benchmark_name]
 
-        config = net_configs[net_configname]
+    config = net_configs[net_configname]
 
-        if devices is None:
-            devices = config[1]
-        if target is None:
-            target = config[2]
-        batch_size = config[3] * batch_size
-        if batch_num is None:
-            batch_num = config[4]
+    if devices is None:
+        devices = config[1]
+    if target is None:
+        target = config[2]
+    batch_size = config[3] * batch_size
+    if batch_num is None:
+        batch_num = config[4]
 
-        with tf.device(devices[-1]):
-            images, labels, num_classes = input_data(batch_size, batch_num)
-
-        print('Input batch shape: images: {} labels: {}'.format(images.get_shape(),
-                                                                labels.get_shape()))
-        
-        print('num_classes: {}'.format(repr(num_classes)))
-        print('devices: {}'.format(repr(devices)))
-
-        (net, logprob, total_loss,
-         train_op, global_step) = alexnetmodes.original(images, labels, num_classes,
-                                          batch_num * batch_size, devices)
+    with tf.device(devices[-1]):
+        images, labels, num_classes = input_data(batch_size, batch_num)
+        print(tf.size(images))
+        print(tf.size(labels))
+    print('num,size',batch_num, batch_size)
+    print('Input batch shape: images: {} labels: {}'.format(images.get_shape(),
+                                                            labels.get_shape()))
+    print(net_configname)
+    if(str(net_configname) == str("single")):
+        (net, logprob, total_loss,train_op, global_step) = alexnetmodes.original(images, labels, num_classes,batch_num * batch_size, devices)
+    else:
+        (net, logprob, total_loss,train_op, global_step) = alexnetmodes.distribute(images, labels, num_classes, batch_num * batch_size, devices)
 
         tfhelper.scalar_summary('total_loss', total_loss)
         summary_op = tfhelper.merge_all_summaries()
@@ -228,7 +229,7 @@ if __name__ == '__main__':
                         default='fake_data')
     parser.add_argument("--batch_num", help='total batch number', type=int)
     parser.add_argument("--batch_size", help='batch size', type=int,
-                        default=128)
+                        default=256)
     parser.add_argument('--redirect_outerr',
                         help="""whether to redirect stdout to WORK_DIR/out.log
                                 and stderr to WORK_DIR/err.log""",

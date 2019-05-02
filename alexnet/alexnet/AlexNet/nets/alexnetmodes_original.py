@@ -71,10 +71,10 @@ def distribute(images, labels, num_classes, total_num_examples, devices, is_trai
     #    read how TensorFlow Variables work, and considering using tf.variable_scope.
     # 5. On the parameter server node, apply gradients.
     # 6. return required values.
-
-
+        """Build inference"""
     if devices is None:
         devices = [None]
+
     def configure_optimizer(global_step, total_num_steps):
         """Return a configured optimizer"""
         def exp_decay(start, tgtFactor, num_stairs):
@@ -94,34 +94,4 @@ def distribute(images, labels, num_classes, total_num_examples, devices, is_trai
             'biases': lparam(exp_decay(0.002, 10, 2), 0.9),
         })
 
-    print('num_classes: ' + str(num_classes))
-    print('total_num_examples: ' + str(total_num_examples))
-    num_workers = len(devices)-1
-    print('num_workers: ', num_workers)
-    print('images.shape: ', images.shape)
-    split_images = tf.split(images,num_workers)
-    split_labels = tf.split(labels,num_workers)
-    print("Total Splits: ",len(split_images))
-    print("Split size: ",split_images[0].shape)
-
-    ps = devices[-1]
-    with tf.device(ps):
-        builder = ModelBuilder(ps)
-
-    global_step = builder.ensure_global_step()
-    grads = []
-    opt = configure_optimizer(global_step, total_num_examples)
-    for i in range(num_workers):
-        with tf.device(devices[i]):
-            with tf.variable_scope("model", reuse=tf.AUTO_REUSE):
-                net, logits, total_loss = alexnet_inference(builder, split_images[i], split_labels[i], num_classes)
-                with tf.control_dependencies([total_loss]):
-                    grads.append(opt.compute_gradients(total_loss))
-
-    with tf.device(ps):
-        avg_grad = builder.average_gradients(grads)
-        apply_gradient_op = opt.apply_gradients(avg_grad, global_step=global_step)
-        with tf.control_dependencies([apply_gradient_op]):
-            train_op = tf.no_op(name='train')
-
-    return net, logits, total_loss, train_op, global_step
+    return

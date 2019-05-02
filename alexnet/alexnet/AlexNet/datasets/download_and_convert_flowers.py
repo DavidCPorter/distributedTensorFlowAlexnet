@@ -32,7 +32,7 @@ import sys
 
 import tensorflow as tf
 
-from . import dataset_utils
+import dataset_utils
 
 # The URL where the Flowers data can be downloaded.
 _DATA_URL = 'http://download.tensorflow.org/example_images/flower_photos.tgz'

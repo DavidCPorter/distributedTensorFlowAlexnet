@@ -9,7 +9,7 @@ fi
 
 USERNAME=$1
 
-source cluster_utils_claudio.sh
+source cluster_utils_alex.sh
 
 #start_cluster startserver.py single
 
@@ -18,7 +18,7 @@ if [ "$2" == "-profile" ]; then
 	start_cluster_with_dstat $USERNAME startserver.py single
 else
 	echo "Running the experiment"
-	start_cluster_alex $USERNAME startserver.py single
+	start_cluster_alex $USERNAME startserver.py cluster
 fi
 
 # defined in cluster_utils.sh to terminate the cluster
