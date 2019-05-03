@@ -71,5 +71,7 @@ def alexnet_inference(builder, images, labels, num_classes, scope=None):
 def alexnet_eval(probs, labels):
     """Evaluate, returns number of correct images"""
     with tf.name_scope('evaluation'):
-        correct = tf.nn.in_top_k(probs, labels, k=1)
+        print(probs)
+        correct = tf.nn.in_top_k(probs, labels, k=5)
+        print(correct)
         return tf.reduce_sum(tf.cast(correct, tf.int32))

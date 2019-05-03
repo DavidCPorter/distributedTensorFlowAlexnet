@@ -73,6 +73,7 @@ def distribute(images, labels, num_classes, total_num_examples, devices, is_trai
     # 6. return required values.
 
 
+
     if devices is None:
         devices = [None]
     def configure_optimizer(global_step, total_num_steps):
@@ -99,6 +100,7 @@ def distribute(images, labels, num_classes, total_num_examples, devices, is_trai
     num_workers = len(devices)-1
     print('num_workers: ', num_workers)
     print('images.shape: ', images.shape)
+
     split_images = tf.split(images,num_workers)
     split_labels = tf.split(labels,num_workers)
     print("Total Splits: ",len(split_images))
@@ -111,10 +113,17 @@ def distribute(images, labels, num_classes, total_num_examples, devices, is_trai
     global_step = builder.ensure_global_step()
     grads = []
     opt = configure_optimizer(global_step, total_num_examples)
+    if not is_train:
+        with tf.device(devices[0]):
+            with tf.variable_scope("model", reuse=tf.AUTO_REUSE):
+                net, logits, total_loss = alexnet_inference(builder, split_images[0], split_labels[0], num_classes)
+                return alexnet_eval(net, split_labels[0])
+
     for i in range(num_workers):
         with tf.device(devices[i]):
             with tf.variable_scope("model", reuse=tf.AUTO_REUSE):
                 net, logits, total_loss = alexnet_inference(builder, split_images[i], split_labels[i], num_classes)
+
                 with tf.control_dependencies([total_loss]):
                     grads.append(opt.compute_gradients(total_loss))
 

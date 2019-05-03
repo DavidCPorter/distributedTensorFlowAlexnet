@@ -21,5 +21,6 @@ else
 	start_cluster_alex $USERNAME startserver.py cluster
 fi
 
+
 # defined in cluster_utils.sh to terminate the cluster
 terminate_cluster $USERNAME

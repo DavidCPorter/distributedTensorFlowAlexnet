@@ -162,7 +162,7 @@ function start_cluster_alex() {
             nohup ssh $USER@node0 "cd ~/tf/alexnet ; python3 ./$PY_SCRIPT --deploy_mode=cluster  --task_index=0" > serverlog-0.out 2>&1&
             nohup ssh $USER@node1 "cd ~/tf/alexnet ; python3 ./$PY_SCRIPT --deploy_mode=cluster  --task_index=1" > serverlog-1.out 2>&1&
             nohup ssh $USER@node0 "cd ~/tf/alexnet ; python3 -m AlexNet.scripts.train --mode cluster --batch_size 10 --batch_num 10 --dataset fake_data" > train_serverlog-0.out 2>&1
-            # --eval option throwing erros. 
+            # --eval option throwing erros.
 
 
             # ssh $USER@node0 "tensorboard --logdir $TF_LOG_DIR"

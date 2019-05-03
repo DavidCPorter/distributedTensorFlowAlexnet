@@ -40,7 +40,7 @@ benchmarks = {
     'flowers': datasets.flowers_data
 }
 
-def evaluate(net_configname, batch_size, devices=None, target=None,
+def evaluate(net_configname, batch_num=10, batch_size=10, devices=None, target=None,
              tb_dir=None, train_dir=None, benchmark_name=None):
     """Evaluation"""
     with tf.Graph().as_default():
@@ -57,15 +57,19 @@ def evaluate(net_configname, batch_size, devices=None, target=None,
         input_data = benchmarks[benchmark_name]
 
         config = net_configs[net_configname]
+        print("config:", config)
         if devices is None:
             devices = config[1]
         if target is None:
             target = config[2]
         batch_size = config[3] * batch_size
+        # print(__dir__.input_data)
+        print('bs: ',batch_size)
+        print('bn: ',batch_num)
 
-        images, labels, num_classes = input_data(batch_size, None, is_train=False)
+        images, labels, num_classes = input_data(batch_size, batch_num)
 
-        correct_op = alexnetmodes.distribute(images, labels, num_classes, None, devices, is_train=False)
+        correct_op = alexnetmodes.distribute(images, labels, num_classes, batch_size, devices, is_train=False)
 
         saver = tf.train.Saver(tf.trainable_variables())
 
@@ -93,7 +97,9 @@ def evaluate(net_configname, batch_size, devices=None, target=None,
             try:
                 while not coord.should_stop():
                     predictions = sess.run([correct_op])
-                    total_sample_count += batch_size
+                    #predictions returns a count on correct predictions for a split data set, so need to divide batch_size by two for accurate precision.
+                    print('pred:',predictions)
+                    total_sample_count += batch_size/2
                     true_count += np.sum(predictions)
                     precision = true_count / total_sample_count
                     print('{}: precision @ {} examples = {:.3f}'.format(datetime.now(),
@@ -120,8 +126,10 @@ def train(net_configname, batch_size, devices=None, target=None,
         os.makedirs(train_dir)
 
     input_data = benchmarks[benchmark_name]
+    print(input_data)
 
     config = net_configs[net_configname]
+    print("config:", config)
 
     if devices is None:
         devices = config[1]
@@ -132,6 +140,8 @@ def train(net_configname, batch_size, devices=None, target=None,
         batch_num = config[4]
 
     with tf.device(devices[-1]):
+        print('bs: ',batch_size)
+        print('bn: ',batch_num)
         images, labels, num_classes = input_data(batch_size, batch_num)
         print(tf.size(images))
         print(tf.size(labels))
@@ -204,6 +214,27 @@ def train(net_configname, batch_size, devices=None, target=None,
                     checkpoint_path = os.path.join(train_dir, 'model-{}.ckpt'.format(step))
                     saver.save(sess, checkpoint_path, write_meta_graph=True)
 
+            evaluate(net_configname, train_dir=train_dir)
+            # correct_op = alexnetmodes.distribute(images, labels, num_classes, 10, devices[0], is_train=False)
+            #
+            # total_sample_count = 0
+            # true_count = 0  # Counts the number of correct predictions.
+            # # try:
+            #
+            # predictions = sess.run([correct_op])
+            #
+            # print('pred:',predictions)
+            # total_sample_count += batch_size
+            # true_count += np.sum(predictions)
+            # precision = true_count / total_sample_count
+            # print('{}: precision @ {} examples = {:.3f}'.format(datetime.now(),
+            #                                                     total_sample_count,
+            #                                                     precision))
+            #
+            # except tf.errors.OutOfRangeError:
+            #     print(tf.errors.OutOfRangeError)
+            #
+            #     pass
             # When done, ask the threads to stop.
             coord.request_stop()
             # And wait for them to actually do it.
