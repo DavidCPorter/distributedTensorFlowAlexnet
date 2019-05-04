@@ -40,6 +40,6 @@ To run a given experment some useful scripts are given.
 
 - To run the logistic regression model in asynchronous mode do the following: `run-scripts/run-task1-cluster.sh username`
 - To run the logistic regression model in synchronous mode do the following: `run-scripts/run-task2.sh username`
-- To run AlexNet in distribute mode do the following: `cd alexnet/alexnet && ./startservers.sh username`
+- To run AlexNet in distribute mode do the following: `cd alexnet/alexnet && ./startservers.sh username mode` (Where mode is either _single_, _cluster_ or _cluster2_)
 
 The output of the run will be logged locally. If you want to profile the experiments using __dstat__ just append to each of the above mentioned commands the '-profile' flag. The output of the proifling will be stored in an appropriate directory.  
