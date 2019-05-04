@@ -121,14 +121,15 @@ function start_cluster_with_dstat(){
             nohup ssh $USER@node2 "dstat --output node2_dstat_$PY_NAME.csv &>/dev/null &"
             nohup ssh $USER@node3 "dstat --output node3_dstat_$PY_NAME.csv &>/dev/null &"
         fi
-        start_cluster $USER $PY_SCRIPT $CLUSTER_MODE
+
+        start_cluster_alex $USER $PY_SCRIPT $CLUSTER_MODE
 
         echo 'Stopping dstat'
         nohup parallel-ssh -i -H "$USER@node0 $USER@node1 $USER@node2 $USER@node3" "ps aux | grep -i 'dstat*' | xargs kill -9"
 
         echo 'Coping the profiling data locally'
         for i in `seq 0 3`; do
-            scp $USER@node$i:"~/node${i}_dstat_$PY_NAME.csv" lr_data/
+            scp $USER@node$i:"~/node${i}_dstat_$PY_NAME.csv" alex_data/
         done
         echo 'Done'
     fi
@@ -167,11 +168,13 @@ function start_cluster_alex() {
 
             # ssh $USER@node0 "tensorboard --logdir $TF_LOG_DIR"
         else
-            nohup ssh $USER@node0 "cd ~/tf ; python3 -u $PY_SCRIPT --deploy_mode=cluster2  --job_name=ps" > serverlog-ps-0.out 2>&1&
-            nohup ssh $USER@node0 "cd ~/tf ; python3 -u $PY_SCRIPT --deploy_mode=cluster2  --task_index=0" > serverlog-0.out 2>&1&
-            nohup ssh $USER@node1 "cd ~/tf ; python3 -u $PY_SCRIPT --deploy_mode=cluster2  --task_index=1" > serverlog-1.out 2>&1&
-            nohup ssh $USER@node2 "cd ~/tf ; python3 -u $PY_SCRIPT --deploy_mode=cluster2  --task_index=2" > serverlog-2.out 2>&1&
-            nohup ssh $USER@node3 "cd ~/tf ; python3 -u $PY_SCRIPT --deploy_mode=cluster2  --task_index=3" > serverlog-3.out 2>&1
+            nohup ssh $USER@node0 "cd ~/tf/alexnet ; python3 ./$PY_SCRIPT --deploy_mode=cluster2  --job_name=ps" > serverlog-ps-0.out 2>&1&
+            nohup ssh $USER@node0 "cd ~/tf/alexnet ; python3 ./$PY_SCRIPT --deploy_mode=cluster2  --task_index=0" > serverlog-0.out 2>&1&
+            nohup ssh $USER@node1 "cd ~/tf/alexnet ; python3 ./$PY_SCRIPT --deploy_mode=cluster2  --task_index=1" > serverlog-1.out 2>&1&
+            nohup ssh $USER@node2 "cd ~/tf/alexnet ; python3 ./$PY_SCRIPT --deploy_mode=cluster2  --task_index=2" > serverlog-2.out 2>&1&
+            nohup ssh $USER@node3 "cd ~/tf/alexnet ; python3 ./$PY_SCRIPT --deploy_mode=cluster2  --task_index=3" > serverlog-3.out 2>&1&
+            nohup ssh $USER@node0 "cd ~/tf/alexnet ; python3 -m AlexNet.scripts.train --mode cluster2 --batch_size 10 --batch_num 10 --dataset fake_data" > train_serverlog-0.out 2>&1
+
         fi
     fi
 }

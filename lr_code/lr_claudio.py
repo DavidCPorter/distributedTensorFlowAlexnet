@@ -75,9 +75,6 @@ elif FLAGS.job_name == "worker":
 
 	# hyperparameters
 	learning_rate = 0.1
-	epochs = 20
-	batch_size = 55
-	num_iter = int(trainSize // batch_size)
 
 	tf.Session(config=tf.ConfigProto(log_device_placement=True, device_filters=['/job:ps', '/job:worker/task:%d' % FLAGS.task_index]))
 
@@ -97,12 +94,14 @@ elif FLAGS.job_name == "worker":
 		y_pred = tf.nn.softmax(tf.add(tf.matmul(X, W), b))
 		cost = tf.reduce_mean(-tf.reduce_sum(Y*tf.log(y_pred), reduction_indices=1))
 		opt = tf.train.GradientDescentOptimizer(learning_rate)
+		
 		train_step = opt.minimize(cost, global_step=global_step)
-
+		
 		correct_pred = tf.equal(tf.argmax(y_pred, 1), tf.argmax(Y, 1))
 		accuracy = tf.reduce_mean(tf.cast(correct_pred, tf.float32))
 
 		init_op = tf.global_variables_initializer()
+
 
 	sv = tf.train.Supervisor(is_chief=(FLAGS.task_index == 0), logdir=LOG_DIR, global_step=global_step, init_op=init_op, recovery_wait_secs=1)
 	

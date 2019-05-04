@@ -117,7 +117,15 @@ elif FLAGS.job_name == "worker":
 
 		opt = tf.train.GradientDescentOptimizer(learning_rate)
 
-		# In a typical asynchronous training environment, it's common to have some stale gradients. For example, with a N-replica asynchronous training, gradients will be applied to the variables N times independently. Depending on each replica's training speed, some gradients might be calculated from copies of the variable from several steps back (N-1 steps on average). This optimizer avoids stale gradients by collecting gradients from all replicas, averaging them, then applying them to the variables in one shot, after which replicas can fetch the new variables and continue.
+		# In a typical asynchronous training environment, it's common to have some stale gradients.
+		# For example, with a N-replica asynchronous training, 
+		# gradients will be applied to the variables N times independently.
+		# Depending on each replica's training speed, 
+		# some gradients might be calculated from copies of the variable from several steps back 
+		# (N-1 steps on average). This optimizer avoids stale gradients
+		# by collecting gradients from all replicas, averaging them,
+		# then applying them to the variables in one shot, 
+		# after which replicas can fetch the new variables and continue.
 		sync_opt=tf.train.SyncReplicasOptimizer(opt, replicas_to_aggregate=2, total_num_replicas=2)
 		optimizer = sync_opt.minimize(cost, global_step=global_step)
 
@@ -149,7 +157,8 @@ elif FLAGS.job_name == "worker":
 
 					print('Worker %d, ' % int(FLAGS.task_index), "Epoch:", '%d' % (e+1),
 						'Cost: %.4f'% float(loss),"gs:","%d"%(gs))
-					if is_chief == 0 and gs > 850:
+					if is_chief == 0 and gs > 850:	is_chief = (FLAGS.task_index == 0)
+
 						break
 
 				if is_chief == 0:
